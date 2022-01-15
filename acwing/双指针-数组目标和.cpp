@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int maxn = 1e5 + 10;
+
+int a[maxn], b[maxn];
+int n, m, x;
+
+int main(){
+    cin >> n >> m >> x;
+    for(int i = 0; i < n; i++) cin >> a[i];
+    for(int i = 0; i < m; i++) cin >> b[i];
+    int i = 0, j = m - 1;
+    
+    while(a[i] + b[j] != x){
+        if(a[i] + b[j] > x) j--;
+        else if(a[i] + b[j] < x) i++;
+        else if(a[i] + b[j] == x){
+            cout << a[i] << " " << b[j];
+        }
+    }
+    cout << a[i] << " " << b[j];
+    return 0;
+}
