@@ -15,7 +15,7 @@ void add(int a, int b){
 
 bool bfs(int x){
     queue<pii> q;
-    q.push({x, 1});
+    q.push({x, 1}); //第一个是编号，第二个是颜色
     st[x] = 1;
 
     while(q.size()){
@@ -23,11 +23,11 @@ bool bfs(int x){
         for(int i = h[ver]; i != -1; i = ne[i]){
             int j = e[i];
 
-            if(!st[j]){
+            if(!st[j]){ //未被染色，则染色
                 st[j] = 3 - color;
                 q.push({j, 3 - color});
             }
-            else{
+            else{ //已被染色则判断
                 if(st[j] == color)  return false;
             }
         }
