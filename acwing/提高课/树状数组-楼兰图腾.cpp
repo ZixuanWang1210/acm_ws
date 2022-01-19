@@ -38,15 +38,15 @@ signed main(){
         add(y, 1);
     }
     
-    for(int i = 1; i <= n; i ++){
+    memset(tr, 0, sizeof tr);
+
+    for(int i = n; i >= 1; i --){
         int y = a[i];
-        int low = ask(y - 1) - lower[i];
-        int up = ask(n) - ask(y) - upper[i];
-
-        ans1 = ans1 + up * upper[i];
-        ans2 = ans2 + low * lower[i];
-
+        ans2 += ask(y - 1) * lower[i];
+        ans1 += (ask(n) - ask(y)) * upper[i];        
+        add(y, 1);
     }
+
     cout << ans1 << " " << ans2;
 
     return 0;

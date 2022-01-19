@@ -1,18 +1,22 @@
 #include <bits/stdc++.h>
 #define endl "\n"
 #define int long long
+// typedef long long ll;
+// typedef unsigned long long ull;
+
 using namespace std;
 
 const int maxn = 5e5 + 10;
+int tr[maxn];
+int a[maxn];
 int n, m;
-int tr[maxn], a[maxn];
 
 int lowbit(int x){
     return x & -x;
 }
 
-void add(int x, int k){
-    for(; x <= n; x += lowbit(x)) tr[x] += k;
+void add(int x, int b){
+    for(; x <= n; x += lowbit(x)) tr[x] += b;
 }
 
 int ask(int x){
@@ -23,24 +27,28 @@ int ask(int x){
 
 signed main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    // #ifdef LOCAL
+    // freopen("in.txt","r",stdin);
+    // freopen("out.txt","w",stdout);
+    // #endif
+
     cin >> n >> m;
     for(int i = 1; i <= n; i ++){
         cin >> a[i];
-        add(i, a[i] - a[i - 1]);
+        add(i, a[i]);
     }
-
-    while(m--){
+    while(m -- ){
         int op; cin >> op;
         if(op == 1){
-            int x, y, k; cin >> x >> y >> k;
-            add(x, k), add(y + 1, -k);
+            int a, b; cin >> a >> b;
+            add(a, b);
         }
         else{
-            int k; cin >> k;
-            cout << ask(k) << endl;
+            int a, b; cin >> a >> b;
+            cout << ask(b) - ask(a - 1) << endl;
         }
     }
-    
+
 
     return 0;
 }
