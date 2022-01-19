@@ -1,58 +1,45 @@
 #include <bits/stdc++.h>
-#define endl "\n"
-#define pii pair<int, int>
-
 using namespace std;
 
-int n, m;
-const int maxn = 2e5 + 10;
-int e[maxn], ne[maxn], h[maxn], idx;
-int st[maxn];
+int m, n1, n2;
+const int M = 1e5 + 10, N = 510;
+int e[M], ne[M], h[N], idx;
+bool st[N];
+int match[N];
 
 void add(int a, int b){
     e[idx] = b, ne[idx] = h[a], h[a] = idx ++;
 }
 
-bool bfs(int x){
-    queue<pii> q;
-    q.push({x, 1});
-    st[x] = 1;
+bool find(int x){
+    for(int i = h[x]; i != -1; i = ne[i]){
+        int j = e[i];
+        if(st[j]) continue;
+        st[j] = true;
 
-    while(q.size()){
-        int ver = q.front().first, color = q.front().second; q.pop();
-        for(int i = h[ver]; i != -1; i = ne[i]){
-            int j = e[i];
-
-            if(!st[j]){
-                st[j] = 3 - color;
-                q.push({j, 3 - color});
-            }
-            else{
-                if(st[j] == color)  return false;
-            }
+        if(match[j] == 0 || find(match[j])){
+            match[j] = x;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-
-    cin >> n >> m;
+    cin >> n1 >> n2 >> m;
     memset(h, -1, sizeof h);
-    for(int i = 1; i <= m; i ++){
-        int a, b; cin >> a >> b;
-        add(a, b), add(b, a);
+    for(int i = 0; i < m; i ++){
+        int u, v; cin >> u >> v;
+        add(u, v);
     }
 
-    for(int i = 1; i <= m; i ++){
-        if(!st[i])
-            if(!bfs(i)){
-                cout << "No" << endl;
-                return 0;
-            }
+    int cnt = 0;
+    for(int i = 1; i <= n1; i ++){
+        memset(st, false, sizeof st);
+        if(find(i)) cnt ++;
     }
     
-    cout << "Yes" << endl;
+    cout << cnt;
+
     return 0;
 }
