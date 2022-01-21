@@ -1,40 +1,55 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string.h>
+
 using namespace std;
-const int N = 500 + 10, M = 10000 + 10, INF = 0x3f3f3f3f;
 
-int n, m, k;
-struct edge{
-    int a, b, w;
-} edge[M];
-int dis[N], backup[N];
+typedef unsigned long long ULL;
+const int N = 2000010, base = 131;
 
-int bellman_ford(){
-    memset(dis, 0x3f, sizeof dis);
-    dis[1] = 0;
-    for(int i = 0; i < k; i++){
-        memcpy(backup, dis, sizeof dis);
-        for(int j = 0; j < m; j++){
-            int a = edge[j].a, b = edge[j].b, w = edge[j].w;
-            dis[b] = min(dis[b], backup[a] + w);
-        }
-    }
+char str[N];
+ULL hl[N], hr[N], p[N];
 
-    if(dis[n] > INF / 2) return 0;
-    else return dis[n];
+ULL get(ULL h[], int l, int r)
+{
+    return h[r] - h[l - 1] * p[r - l + 1];
 }
 
-int main(){
-    cin >> n >> m >> k;
-    for(int i = 0; i < m; i++){
-        int a, b, k;
-        cin >> a >> b >> k;
-        edge[i] = {a, b, k};
+int main()
+{
+    int T = 1;
+    while (scanf("%s", str + 1), strcmp(str + 1, "END"))
+    {
+        int n = strlen(str + 1);
+        for (int i = n * 2; i; i -= 2)
+        {
+            str[i] = str[i / 2];
+            str[i - 1] = 'a' + 26;
+        }
+        n *= 2;
+        p[0] = 1;
+        for (int i = 1, j = n; i <= n; i ++, j -- )
+        {
+            hl[i] = hl[i - 1] * base + str[i] - 'a' + 1; 
+            hr[i] = hr[i - 1] * base + str[j] - 'a' + 1;
+            p[i] = p[i - 1] * base;
+        }
+
+        int res = 1;
+        for (int i = 1; i <= n; i ++ )
+        {
+            int len = res;
+            if(res + i > n) break;
+            while(1){
+                if(len + i > n||i-len < 1) break;
+                if (get(hl, i - len, i - 1) != get(hr, n - (i + len) + 1, n - (i + 1) + 1)) break;
+                if()
+                res = max(res, len);
+                len ++;
+            }
+        }
+        
+        printf("Case %d: %d\n", T ++ , res);
     }
-
-
-    int ans = bellman_ford();
-    if(ans == 0) cout << "impossible";
-    else cout << ans;
 
     return 0;
 }

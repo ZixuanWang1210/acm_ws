@@ -1,45 +1,53 @@
 #include <bits/stdc++.h>
 #define endl "\n"
-#define int long long
+// typedef long long ll;
+typedef unsigned long long ull;
+
 using namespace std;
 
-const int maxn = 5e5 + 10;
 int n, m;
-int tr[maxn], a[maxn];
+string s;
+const int maxn = 2000010, P = 131;
+ull p[maxn], h1[maxn], h2[maxn];
+int ans = 1;
 
-int lowbit(int x){
-    return x & -x;
+int get(ull h[], int l, int r){
+    return h[r] - h[l - 1] * p[r - l + 1];
 }
 
-void add(int x, int k){
-    for(; x <= n; x += lowbit(x)) tr[x] += k;
-}
-
-int ask(int x){
-    int ans = 0;
-    for(; x; x -= lowbit(x)) ans += tr[x];
-    return ans;
-}
-
-signed main(){
+int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin >> n >> m;
-    for(int i = 1; i <= n; i ++){
-        cin >> a[i];
-        add(i, a[i] - a[i - 1]);
+    int in = 1;
+    while(cin >> s, s != "END"){
+        cout << "Case " << in ++ << ": ";
+        string temp; temp = "0";
+        for(int i = 0; i < s.length(); i ++){
+            temp += s[i];
+            if(i != s.length() - 1) temp += "#";
+        }
+    
+        s = temp;
+        p[0] = 1;
+        for(int i = 1, j = s.length()-1; i <= s.length() - 1; i ++, j--){
+            p[i] = p[i -1] *P;
+            h1[i] = h1[i-1]*P + s[i];
+            h2[i] = h2[i-1]*P + s[j];
+        }
+
+        for(int i = 1; i <= s.length()-1; i ++){
+            int len = ans;
+            if(i + len > s.length()-1) break;
+            while(1){
+                if(i + len > s.length()-1) break;
+                if(get(h1, i - len, len - 1) != get(h2, n - (i + len) + 1, n - (i + 1) + 1)) break;
+                ans = max(ans, len);
+                len ++;
+            }
+        }
+
+        cout << ans << endl;
     }
 
-    while(m--){
-        int op; cin >> op;
-        if(op == 1){
-            int x, y, k; cin >> x >> y >> k;
-            add(x, k), add(y + 1, -k);
-        }
-        else{
-            int k; cin >> k;
-            cout << ask(k) << endl;
-        }
-    }
     
 
     return 0;
