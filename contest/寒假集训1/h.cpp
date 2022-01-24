@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #define endl "\n"
 #define debug(x) cout << #x << ": -----> " << x << endl;
-typedef long long ll;
+// typedef long long ll;
 // typedef unsigned long long ull;
 
 using namespace std;
@@ -10,35 +10,37 @@ const int maxn = 3e6 + 10;
 int n;
 long long ans;
 vector<int> a,s;
-bool st[maxn];
+map<int,int> mp;
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
     cin >> n;
     for(int i=1;i<=n;i++){
         int t; cin >> t; a.push_back(t);
+        mp[a[i]] ++;
     }
 
     sort(a.begin(), a.end());
+    a.erase(unique(a.begin(),a.end()),a.end());
+    int pos = lower_bound(a.begin(),a.end(),500) - a.begin();
+
+    cout << pos;
     int re = 0;
-    for(int i = 0; i < n; i ++){
-        ll ans_hang = 0;
-        if(st[a[i]]){
-            ans += (re - abs(a[i]+a[i]-1000));
-            continue;
-        }
-        for(int j = i; j < n; j++){
-            ans_hang += abs(a[i]+a[j]-1000);
-        }
-        re = ans_hang;
-        ans += ans_hang;
-        st[a[i]] = 1;
+    s.push_back(0);
+    for(auto x : a){
+        int t = x + re;
+        re = x;
+        s.push_back(t);
     }
+
+    n = a.size();
+    ans = (n-pos+1)*(s[n-1]-s[pos-1]);
+
     
 
 
     
-    cout << ans;
+    // cout << ans;
 
     return 0;
 }

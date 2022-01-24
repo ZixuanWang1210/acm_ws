@@ -9,7 +9,7 @@ using namespace std;
 const int maxn = 3e6 + 10;
 int n;
 long long ans;
-vector<int> a,s;
+vector<int> a;
 bool st[maxn];
 
 int main(){
@@ -20,11 +20,11 @@ int main(){
     }
 
     sort(a.begin(), a.end());
-    int re = 0;
+    ll re = 0;
     for(int i = 0; i < n; i ++){
         ll ans_hang = 0;
         if(st[a[i]]){
-            ans += (re - abs(a[i]+a[i]-1000));
+            ans += (re - abs(a[i-1]+a[i-1]-1000));
             continue;
         }
         for(int j = i; j < n; j++){
@@ -34,9 +34,6 @@ int main(){
         ans += ans_hang;
         st[a[i]] = 1;
     }
-    
-
-
     
     cout << ans;
 
