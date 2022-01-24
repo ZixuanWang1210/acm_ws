@@ -1,54 +1,67 @@
-#include <bits/stdc++.h>
-#define endl "\n"
-// typedef long long ll;
-typedef unsigned long long ull;
+#include <cmath>
+#include <cstdio>
+#include <algorithm>
+#include <queue>
 
 using namespace std;
 
-int n, m;
-string s;
-const int maxn = 2000010, P = 131;
-ull p[maxn], h1[maxn], h2[maxn];
-int ans = 1;
+const int N = 5 * 1e5 + 10;
+// 2 ** 20 = 1048576
+const int M = 20;
+long long s[N], table[N][M];
 
-int get(ull h[], int l, int r){
-    return h[r] - h[l - 1] * p[r - l + 1];
+void init(int n) {
+    for (int i = 1; i <= n; i++) table[i][0] = i;
+    for (int j = 1; (1 << j) <= n; j++)
+        for (int i = 1; i + (1 << j) - 1 <= n; i++) {
+            int x = table[i][j - 1], y = table[i + (1 << (j - 1))][j - 1];
+            table[i][j] = s[x] > s[y] ? x : y;
+        }
 }
 
-int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    int in = 1;
-    while(cin >> s, s != "END"){
-        cout << "Case " << in ++ << ": ";
-        string temp; temp = "0";
-        for(int i = 0; i < s.length(); i ++){
-            temp += s[i];
-            if(i != s.length() - 1) temp += "#";
-        }
-    
-        s = temp;
-        p[0] = 1;
-        for(int i = 1, j = s.length()-1; i <= s.length() - 1; i ++, j--){
-            p[i] = p[i -1] *P;
-            h1[i] = h1[i-1]*P + s[i];
-            h2[i] = h2[i-1]*P + s[j];
-        }
+int query(int l, int r) {
+    int k = log2(r - l + 1);
+    int x = table[l][k], y = table[r - (1 << k) + 1][k];
+    return s[x] > s[y] ? x : y;
+}
 
-        for(int i = 1; i <= s.length()-1; i ++){
-            int len = ans;
-            if(i + len > s.length()-1) break;
-            while(1){
-                if(i + len > s.length()-1) break;
-                if(get(h1, i - len, len - 1) != get(h2, n - (i + len) + 1, n - (i + 1) + 1)) break;
-                ans = max(ans, len);
-                len ++;
-            }
-        }
+// element(o, l, r)表示一组方案，左端点在o，右端点在[l, r]之间
+struct element {
+    int o, l, r, m;
+    element() {}
+    element(int o, int l, int r) : o(o), l(l), r(r), m(query(l, r)) {}
+    friend bool operator < (const element& a, const element& b) {
+        return s[a.m] - s[a.o - 1] < s[b.m] - s[b.o - 1];
+    }
+};
 
-        cout << ans << endl;
+priority_queue<element> q;
+
+int main() {
+    int n, k, L, R;
+    scanf("%d%d%d%d", &n, &k, &L, &R);
+    // 前缀和
+    for (int i = 1; i <= n; i++) {
+        scanf("%lld", &s[i]);
+        s[i] += s[i - 1];
     }
 
-    
+    // 用ST树求解RMQ
+    init(n);
+    for (int i = 1; i <= n; i++)
+        if (i + L - 1 <= n) 
+            q.push(element(i, i + L - 1, min(i + R - 1, n)));
+
+    long long ans = 0;
+    while (k-- ) {
+        element e = q.top(); q.pop();
+        int o = e.o, l = e.l, r = e.r, m = e.m;
+
+        ans += s[m] - s[o - 1];
+        if (l != m) q.push(element(o, l, m - 1)); 
+        if (m != r) q.push(element(o, m + 1, r));
+    }
+    printf("%lld\n", ans);
 
     return 0;
 }
