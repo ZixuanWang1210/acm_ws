@@ -1,41 +1,33 @@
-#include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-typedef long long ll;
-// typedef unsigned long long ull;
-
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#include<math.h>
+#pragma GCC optimize(3)
 using namespace std;
-
-const int maxn = 3e6 + 10;
-int n;
-long long ans;
-vector<int> a;
-bool st[maxn];
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin >> n;
-    for(int i=1;i<=n;i++){
-        int t; cin >> t; a.push_back(t);
+typedef long long ll;
+const int N = 1e6 + 10;
+int a[N],ans[N];
+ll s[N];
+vector<int> p;
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    for(int i = 1; i <= n; i ++ )
+    {
+        scanf("%d",&a[i]);
+        ans[a[i]] ++;
     }
 
-    sort(a.begin(), a.end());
-    ll re = 0;
-    for(int i = 0; i < n; i ++){
-        ll ans_hang = 0;
-        if(st[a[i]]){
-            ans += (re - abs(a[i-1]+a[i-1]-1000));
-            continue;
+    ll sum = 0;
+    ll cnt;
+    for(int i = 0; i <= 1000; i ++ )
+        for(int j = i; j <= 1000; j ++)
+        {
+            if(i != j) cnt =ans[i] * ans[j];
+            else cnt = (1ll*ans[i] * (ans[i] - 1) / 2 + ans[i]);
+            sum += 1ll*cnt * abs(i + j - 1000);
         }
-        for(int j = i; j < n; j++){
-            ans_hang += abs(a[i]+a[j]-1000);
-        }
-        re = ans_hang;
-        ans += ans_hang;
-        st[a[i]] = 1;
-    }
-    
-    cout << ans;
-
+    printf("%lld\n",sum);
     return 0;
 }
