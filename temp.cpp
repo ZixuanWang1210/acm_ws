@@ -1,85 +1,118 @@
-#include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
-
-using namespace std;
-
-int a[8][7]=
-{0,0,0,0,0,0,0,
-1, 0,0,1,1,1,0,
-2, 0,1,0,1,0,1,
-3, 0,1,1,0,1,1,
-4, 1,0,0,1,0,0,
-5, 1,0,1,0,1,0,
-6, 1,1,0,0,0,1,
-7, 1,1,1,1,1,1};
-
-int n,c;
-vector<int> v;
-int st[110];
-int cnt;
-
-bool pd(int i){
-    bool falg=true;
-    for(int j=1;j<=6;j++){
-        if(st[j]==-1)continue;
-        if(st[j]!=a[i][j]){
-            falg=false;
-            break;
-        }
+#include <cstdio>
+#define Len(i) (tr[i].r-tr[i].l+1)
+const int MAXN = 100005;
+#define root tr[u]
+#define ls tr[u<<1]
+#define rs tr[u<<1|1]
+int read()
+{
+    int x=0,flag=1;char c;
+    while((c=getchar())<'0' || c>'9') if(c=='-') flag=-1;
+    while(c>='0' && c<='9') x=(x<<3)+(x<<1)+(c^'0'),c=getchar();
+    return x*flag;
+}
+int n,m,q,ans,a[MAXN];
+struct node
+{
+    int op,l,r;
+}s[MAXN];
+struct tree
+{
+    int l,r,sum,lazy;
+}tr[MAXN*4];
+void build(int u,int l,int r){
+    tr[u]={l,r};
+    if(l==r){
+        tr[u]={l,r,0,0};
+        return;
     }
-    if(falg){
-        cnt++;
-        for(int j=1,cnt=1;cnt<=n;j++,cnt++){
-            cout<<a[i][j];
-            if(j==6) j=0;
-        }
-        cout << endl;
+    else{
+        int mid=l+r>>1;
+        build(u<<1,l,mid),build(u<<1|1,mid+1,r);
+        return;
     }
-    return true;
 }
 
-int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin>>n>>c;
-    
-    int t;
-    memset(st,-1,sizeof st);
-    while(cin>>t,t!=-1){
-        // if(t!=6)    
-        t%=6;
-        if(t==0)t=6;
-        st[t]=1;
+void down(int u){
+    if(root.lazy==1){
+        ls.sum=(ls.r-ls.l+1),ls.lazy=1;
+        rs.sum=(rs.r-rs.l+1),rs.lazy=1;
     }
-
-    while(cin>>t,t!=-1){
-        // if(t!=6)
-        t%=6;
-        if(t==0)t=6;
-        st[t]=0;
-    }
-
-    if(c==0){
-        pd(7);
-        if(cnt==0) cout<<"IMPOSSIBLE"<<endl;
-    }
-    
-    else if(c==1){
-        pd(0);pd(2);pd(3);pd(5);
-        if(cnt==0) cout<<"IMPOSSIBLE"<<endl;
-    }
-
-    else if(c==2){
-        pd(0);pd(1);pd(2);pd(4);pd(5);pd(6);pd(7);
-        if(cnt==0) cout<<"IMPOSSIBLE"<<endl;
-    }
-
     else{
-        for(int i=0;i<8;i++) pd(i);
-        if(cnt==0) cout<<"IMPOSSIBLE"<<endl;
+        ls.sum=0,ls.lazy=2;
+        rs.sum=0,rs.lazy=2;
     }
-
-    return 0;
+    root.lazy=0;
+}
+void updata(int i,int l,int r,int t)
+{
+    if(l>r || tr[i].l>r || tr[i].r<l)
+        return ;
+    if(l<=tr[i].l && tr[i].r<=r)
+    {
+        if(t==0) tr[i].sum=Len(i),tr[i].lazy=1;
+        else tr[i].sum=0,tr[i].lazy=2;
+        return ;
+    }
+    if(tr[i].lazy) down(i);
+    updata(i<<1,l,r,t);
+    updata(i<<1|1,l,r,t);
+    tr[i].sum=tr[i<<1].sum+tr[i<<1|1].sum;
+}
+int query(int u,int l,int r){
+    if(l<=root.l&&r>=root.r){
+        return root.sum;
+    }
+    else{
+        if(root.lazy) down(u);
+        int mid=root.l+root.r>>1,ans=0;
+        if(l<=mid) ans+=query(u<<1,l,r);
+        if(r>mid) ans+=query(u<<1|1,l,r);
+        return ans;
+    }
+}
+bool check(int x)
+{
+    build(1,1,n);
+    for(int i=1;i<=n;i++)
+        updata(1,i,i,a[i]>=x);
+    for(int i=1;i<=m;i++)
+    {
+        int op=s[i].op,l=s[i].l,r=s[i].r;
+        int t=query(1,l,r);
+        if(op==0)
+        {
+            updata(1,l,l+t-1,0);
+            updata(1,l+t,r,1);
+        }
+        else
+        {
+            updata(1,l,r-t,1);
+            updata(1,r-t+1,r,0);
+        }
+    }
+    return query(1,q,q)==0;
+}
+void dich(int l,int r)
+{
+    if(l>r) return ;
+    int mid=(l+r)>>1;
+    if(check(mid))
+    {
+        ans=mid;
+        dich(mid+1,r);
+    }
+    else
+        dich(l,mid-1);
+}
+int main()
+{
+    n=read();m=read();
+    for(int i=1;i<=n;i++)
+        a[i]=read();
+    for(int i=1;i<=m;i++)
+        s[i]=node{read(),read(),read()};
+    q=read();
+    dich(1,n);
+    printf("%d\n",ans);
 }

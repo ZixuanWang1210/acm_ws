@@ -1,44 +1,7 @@
-#include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-typedef long long ll;
-// typedef unsigned long long ull;
-
-using namespace std;
-
-const int maxn = 3e6 + 10;
-int n;
-long long ans;
-vector<int> a,s;
-bool st[maxn];
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin >> n;
-    for(int i=1;i<=n;i++){
-        int t; cin >> t; a.push_back(t);
-    }
-
-    sort(a.begin(), a.end());
-    int re = 0;
-    for(int i = 0; i < n; i ++){
-        ll ans_hang = 0;
-        if(st[a[i]]){
-            ans += (re - abs(a[i]+a[i]-1000));
-            continue;
-        }
-        for(int j = i; j < n; j++){
-            ans_hang += abs(a[i]+a[j]-1000);
-        }
-        re = ans_hang;
-        ans += ans_hang;
-        st[a[i]] = 1;
-    }
-    
-
-
-    
-    cout << ans;
-
-    return 0;
-}
+ query(int L,int R,int l,int r,int k){
+//     if(l==r) return r;
+//     int cnt=tr[tr[L].l].cnt-tr[tr[R].l].cnt;
+//     int mid=l+r>>1;
+//     if(k<=cnt) return query(tr[L].l,tr[R].l,l,mid,k);
+//     else return query(tr[L].r,tr[R].r,mid+1,r,k-cnt);
+// }

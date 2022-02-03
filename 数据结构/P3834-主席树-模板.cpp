@@ -3,13 +3,13 @@
 #define debug(x) cout << #x << ": -----> " << x << endl;
 using namespace std;
 
-const int N=2e5+10,M=2e5+10;
+const int N=1e5+10,M=1e4+10;
 int n,m;
 int a[N];
 struct node{
     int l,r;
     int cnt;
-} tr[N*4+N*20];
+} tr[N*4+N*17];
 
 vector<int> nums;
 int root[N],idx;
