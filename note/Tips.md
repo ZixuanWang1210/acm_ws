@@ -317,3 +317,25 @@ bool cmp(node a,node b)
 
 
 
+### 在一行中连续读入数字
+
+用getline可以吞掉\n等特殊字符
+
+```cpp
+string s;
+getline(cin, s);
+memset(h, -1, sizeof h);
+for (int i = 1; i <= m; i++) {
+    getline(cin, s);
+    vector<int> v;
+    stringstream ssin(s);
+    int tt;
+    while (ssin >> tt) v.push_back(tt);
+    for (int i = 0; i < v.size(); i++) {
+        for (int j = i + 1; j < v.size(); j++) {
+            add(v[i], v[j]);
+        }
+    }
+}
+```
+
