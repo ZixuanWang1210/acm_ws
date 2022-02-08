@@ -7,13 +7,13 @@
 using namespace std;
 
 long long t,n,x,y;
-int a[100010];
 
 void sol(){
+    cin>>n>>x>>y;
     long long sum=0;
     for(int i=1;i<=n;i++){
-        cin>>a[i];
-        sum+=a[i];
+        long long tt; cin>>tt;
+        sum+=tt;
     }
     sum%=2,x%=2,y%=2;
     if(sum){
@@ -33,10 +33,8 @@ int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
     cin>>t;
     while(t--){
-        cin>>n>>x>>y;
         sol();
     }
     
-
     return 0;
 }
