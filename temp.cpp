@@ -6,37 +6,50 @@
 
 using namespace std;
 
-long long t,n,x,y;
-int a[100010];
+const int maxn=100;
+int e[maxn],ne[maxn],h[maxn],idx;
+int n;
+int din[maxn];
+int ans[maxn],cnt;
 
-void sol(){
-    long long sum=0;
-    for(int i=1;i<=n;i++){
-        cin>>a[i];
-        sum+=a[i];
-    }
-    sum%=2,x%=2,y%=2;
-    if(sum){
-        x^=1;
-    }
-    if(x==y){
-        cout<<"Alice"<<endl;
-        return;
-    }
-    else{
-        cout<<"Bob"<<endl;
-        return;
-    }
+queue<int> q;
+
+void add(int a,int b){
+    e[idx]=b,ne[idx]=h[a],h[a]=idx++;
 }
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin>>t;
-    while(t--){
-        cin>>n>>x>>y;
-        sol();
+    cin>>n;
+    memset(h,-1,sizeof h);
+    for(int i=1;i<=n;i++){
+        int t=0;
+        
+        while(cin>>t,t){
+            // cout<<t<<endl;
+            add(i,t);
+            din[t]++;
+        }
+        // cout<<t<<endl;
+    }
+
+    for(int i=1;i<=n;i++){
+        if(din[i]==0){
+            q.push(i);
+        }
+    }
+
+    while(q.size()){
+        int tt=q.front(); q.pop();
+        ans[++cnt]=tt;
+        for(int i=h[tt];~i;i=ne[i]){
+            int j=e[i];
+            din[j]--;
+            if(din[j]==0) q.push(j);
+        }
     }
     
-
+    for(int i=1;i<=cnt;i++) cout<<ans[i]<<" ";
+    
     return 0;
 }
