@@ -626,6 +626,8 @@ reverse(v.begin(),v.end());//容器v的值变为1,2,3,4,5
 
 ### min()
 
+### is_sorted()
+
 ### swap()
 
 交换指针，可用于容器

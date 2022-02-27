@@ -1,55 +1,60 @@
-#include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
-
+#include<bits/stdc++.h>
+#define pii pair<int,int>
 using namespace std;
 
-const int maxn=100;
-int e[maxn],ne[maxn],h[maxn],idx;
-int n;
-int din[maxn];
-int ans[maxn],cnt;
-
-queue<int> q;
+const int N=10+10,M=20+10;
+int h[N],ne[M],e[M],idx;
+int n,m;
+int st[N],ans[N],dis[N];
 
 void add(int a,int b){
     e[idx]=b,ne[idx]=h[a],h[a]=idx++;
 }
 
-int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin>>n;
-    memset(h,-1,sizeof h);
-    for(int i=1;i<=n;i++){
-        int t=0;
-        
-        while(cin>>t,t){
-            // cout<<t<<endl;
-            add(i,t);
-            din[t]++;
-        }
-        // cout<<t<<endl;
-    }
-
-    for(int i=1;i<=n;i++){
-        if(din[i]==0){
-            q.push(i);
-        }
-    }
+void bfs(){
+    queue<pii> q;
+    memset(dis,0x3f,sizeof dis);
+    st[1]=true;
+    q.push({1,0});
+    ans[1]=1;
+    dis[1]=0;
 
     while(q.size()){
-        int tt=q.front(); q.pop();
-        ans[++cnt]=tt;
-        for(int i=h[tt];~i;i=ne[i]){
+        int t=q.front().first, dist=q.front().second;
+        q.pop();
+        for(int i=h[t];~i;i=ne[i]){
             int j=e[i];
-            din[j]--;
-            if(din[j]==0) q.push(j);
+            if(!st[j]){
+                st[j]=true;
+                ans[j]+=ans[t];
+                dis[j]=dist+1;
+                cout<<dist<<endl;
+                cout<<j<<' '<<dist+1<<endl;
+                q.push({j,dist+1});
+            }
+            else{
+                if(dist+1==dis[j]) ans[j]+=ans[t];
+            }
         }
     }
+
     
-    for(int i=1;i<=cnt;i++) cout<<ans[i]<<" ";
-    
+}
+
+int main(){
+    cin>>n>>m;
+    memset(h,-1,sizeof h);
+    for(int i=1;i<=m;i++){
+        int a,b; cin>>a>>b;
+        if(a==b) continue;
+        add(a,b),add(b,a);
+    }
+
+    bfs();
+
+    for(int i=1;i<=n;i++){
+        cout<<ans[i]<<endl;
+    }
+
     return 0;
 }

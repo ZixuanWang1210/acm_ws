@@ -70,7 +70,8 @@
         "new": "cpp",
         "stdexcept": "cpp",
         "typeindex": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "rope": "cpp"
     },
     "code-runner.executorMap": {
         "cpp": " cd $dir && g++ $fileName -D LOCAL -o a.exe && .\\a.exe",

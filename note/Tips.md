@@ -35,6 +35,8 @@
 
 2. 函数返回值
 
+3. http://blog.sina.com.cn/s/blog_a9fd746b01018ihd.html
+
 
 
 ### getline()
@@ -338,4 +340,8 @@ for (int i = 1; i <= m; i++) {
     }
 }
 ```
+
+### 初始化
+
+<img src="C:\Users\wangz\AppData\Roaming\Typora\typora-user-images\image-20220225124147475.png" alt="image-20220225124147475" style="zoom:50%;" />
 
