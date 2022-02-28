@@ -1,0 +1,8 @@
+*.cbp
+*.depend
+*.layout
+*.clang-format
+*.cbp
+/.vscode
+/.obj
+tempCodeRunnerFile*
