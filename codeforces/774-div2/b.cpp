@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#define int long long
 using namespace std;
 
 
@@ -24,7 +25,7 @@ void sol(){
 }
 
 
-int main(){
+signed main(){
     int t; cin>>t;
     while(t--){
         sol();
