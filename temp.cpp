@@ -1,30 +1,58 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
+#define int long long
 using namespace std;
-const int N = 1e5 + 10;
 
-int q[N];
+int a[20];
 
-int main() {
-    int n;
-    cin >> n;
-    int hh = 0, tt = -1;
-    while (n--) {
-        string op;
-        int x;
-        cin >> op;
-        if (op == "push") {
-            cin >> x;
-            q[++tt] = x;
-        } else if (op == "pop") {
-            hh++;
-        } else if (op == "empty") {
-            if (hh <= tt)
-                puts("NO");
-            else
-                puts("YES");
-        } else {
-            cout << q[hh] << endl;
+int get(int x) {
+    int res = 0;
+    while (x) {
+        if (x & 1) res++;
+        x >>= 1;
+    }
+    return res;
+}
+
+void biao() {
+    a[1] = 1;
+    a[0] = 0;
+    for (int i = 2; i <= 15; i++) {
+        a[i] = a[i - 1] * i;
+        // cout<<a[i]<<' ';
+    }
+}
+
+void sol() {
+    int x;
+    cin >> x;
+    int ans = 0x3f3f3f3f;
+    for (int i = 0; i < (1 << 16); i++) {
+
+        int temp = 0, cnt = 0;
+        for (int j = 0; j < 16; j++) {
+            if (i & (1 << j)) {
+                temp += a[j];
+                cnt++;
+            }
+        }
+        if (temp > x)
+            continue;
+        else {
+            int res = cnt + get(x - temp);
+            ans = min(res, ans);
         }
     }
+    cout << ans << endl;
+    return;
+}
+
+signed main() {
+    biao();
+    int t;
+    cin >> t;
+    while (t--) {
+        sol();
+    }
+
+    return 0;
 }
