@@ -1,0 +1,1 @@
+{"name":"Local: d-","url":"e:\\acm_ws\\atcoder\\abc242\\d-.cpp","tests":[{"id":1646731430796,"input":"ABC\n4\n0 1\n1 1\n1 3\n1 6","output":"A\nB\nC\nB"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\atcoder\\abc242\\d-.cpp","group":"local","local":true}

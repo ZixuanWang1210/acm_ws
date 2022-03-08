@@ -1,5 +1,4 @@
 #include<bits/stdc++.h>
-#define int long long 
 using namespace std;
 
 string s;
@@ -16,14 +15,11 @@ void sol(){
     char base=s[k];
     change%=3;
     base+=change;
-    if(base=='E') base='B';
-    if(base=='D') base='A';
     cout<<base<<endl;
 }
 
-signed main(){
+int main(){
     cin>>s;
-    s='0'+s;
     int _; cin>>_;
     while(_--){
         sol();

@@ -1,25 +1,23 @@
-#include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
-
+#include<bits/stdc++.h>
 using namespace std;
 
-const int maxn=1e6;
-string s[maxn];
-
+string S;
+int Q;
 
 int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    cin>>s[0];
-    int t; cin>>t;
-    
-    while(t--){
-        int num,idx; cin>>num>>idx;
-
-    }
-    
-
-    return 0;
+	cin >> S >> Q;
+	long long k, pos;
+	while(Q--){
+		cin >> k >> pos;
+		int diff = 0;
+		while(k != 0 && pos != 1){
+			diff += (pos % 2 == 0 ? 2 : 1);
+			pos = (pos + 1) / 2;
+			-- k;
+		}
+		k += diff;
+		putchar((char)((S[pos-1] - 'A' + k) % 3 + 'A'));
+		puts("");
+	}	
+	return 0;
 }
