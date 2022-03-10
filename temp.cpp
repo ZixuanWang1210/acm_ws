@@ -22,12 +22,12 @@ void sol(){
 }
 
 signed main(){
-    cin>>s;
-    s='0'+s;
-    int _; cin>>_;
-    while(_--){
-        sol();
-    }
+    // cin>>s;
+    // s='0'+s;
+    // int _; cin>>_;
+    // while(_--){
+    //     sol();
+    // }
 
     return 0;
 }
