@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include<iostream>
+
 #define endl "\n"
 #define debug(x) cout << #x << ": -----> " << x << endl;
 // typedef long long ll;
@@ -6,7 +8,7 @@
 
 using namespace std;
 
-const int maxn=1e3;
+const int maxn=1e8;
 int p[maxn];
 int n,m;
 
