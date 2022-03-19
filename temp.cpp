@@ -6,43 +6,27 @@
 
 using namespace std;
 
-const int maxn=1e3;
-int p[maxn];
-int n,m;
-
-int find(int x){
-    if(p[x]!=x) p[x]=find(p[x]);
-    return p[x];
-}
-
-void merge(int a,int b){
-    a=find(a),b=find(b);
-    if(a!=b) p[b]=a;
-    return;
-}
+int n,k;
+const int maxn=30;
+int mp[maxn][maxn];
+int a[maxn];
+int x,ans;
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    while(cin>>n>>m,n||m){
-        for(int i=0;i<n;i++){
-            p[i]=i;
+    cin>>n>>k;
+    for(int o=1;o<=k;o++){
+        for(int j=1;j<=n;j++){
+            cin>>a[j];
         }
-        for(int i=1;i<=m;i++){
-            int num; cin>>num;
-            int fi; cin>>fi;
-            for(int j=1;j<=num-1;j++){
-                int x; cin>>x;
-                merge(fi,x);
+        for(int i=1;i<=n-1;i++){
+            for(int j=i+1;j<=n;j++){
+                mp[a[i]][a[j]]++;
+                if(mp[a[i]][a[j]]==k) ans++;
             }
         }
-        int pp=find(0);
-        int ans=0;
-        for(int i=0;i<n;i++){
-            if(find(i)==pp) ans++;
-        }
-        cout<<ans<<endl;
-    }   
-
+    }
+    cout<<ans;
 
     return 0;
 }
