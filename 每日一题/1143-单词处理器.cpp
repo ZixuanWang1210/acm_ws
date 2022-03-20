@@ -20,12 +20,12 @@ int main(){
         v.push_back(word);
     }
 
-    int len=0;
     for(auto x:v){
+        int len=0;
         len+=x.length();
         if(len>k){
             cout<<endl;
-            len=x.length();
+            len=0;
         }
         cout<<x<<' ';
     }

@@ -1,1 +1,0 @@
-{"name":"Local: a","url":"e:\\acm_ws\\a.cpp","tests":[{"id":1647652110911,"input":"fixprefixsuffix","output":""},{"id":1647652115226,"input":"abcdabc","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\a.cpp","group":"local","local":true}
