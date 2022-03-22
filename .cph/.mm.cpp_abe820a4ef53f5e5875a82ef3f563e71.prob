@@ -1,1 +1,0 @@
-{"name":"Local: mm","url":"e:\\acm_ws\\mm.cpp","tests":[{"id":1647756484500,"input":"abc\nbcd","output":"bc"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\mm.cpp","group":"local","local":true}
