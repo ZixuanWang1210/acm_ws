@@ -3,6 +3,7 @@
 *.layout
 *.clang-format
 *.cbp
+*.cph
 /.vscode
 /.obj
 tempCodeRunnerFile*
