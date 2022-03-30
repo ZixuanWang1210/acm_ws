@@ -1,42 +1,28 @@
 #include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
-
 using namespace std;
 
-const int maxn=10;
-int v[maxn],now[maxn];
-int n;
-
-
-int main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    for(int i=1;i<=3;i++){
-        cin>>v[i]>>now[i];
+const int N = 2e5 + 5;
+int p[N], cnt[32][2];
+ 
+void solve() {
+    memset(cnt, 0, sizeof cnt);
+    int l, r; cin >> l >> r;
+    for (int i = l; i <= r; ++i) {
+    	int x; cin >> x;
+    	for (int j = 0; j <= 30; ++j, x >>= 1)
+    		cnt[j][x & 1]++;
     }
-    for(int i=0;i<100;i++){
-        if(i%3==0){
-            now[2]+=now[1];
-            if(now[2]>v[2]) now[1]=now[2]-v[2],now[2]=v[2];
-            else now[1]=0;
-        }
-        else if(i%3==1){
-            now[3]+=now[2];
-            if(now[3]>v[3]) now[2]=now[3]-v[3],now[3]=v[3];
-            else now[2]=0;
-        }
-        else if(i%3==2){
-            now[1]+=now[3];
-            if(now[1]>v[1]) now[3]=now[1]-v[1],now[1]=v[1];
-            else now[3]=0;
-        }
+    int ans = 0;
+    for (int i = 0; i <= 30; ++i) {
+    	ans |= ((cnt[i][0] < cnt[i][1]) * (1 << i));
     }
-    for(int i=1;i<=3;i++){
-        cout<<now[i]<<endl;
-    }
-    
+    cout << ans << '\n';
+}
 
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t; cin >> t;
+    while (t--) solve();
     return 0;
 }

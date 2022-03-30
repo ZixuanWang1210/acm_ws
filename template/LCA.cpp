@@ -15,6 +15,12 @@ void add(int a, int b) {
 }
 
 struct LCA {
+    /*
+    $st[cnt][0]$：树的$dfs$序，第$cnt$个遍历的点是$st[cnt][0]$
+    $dfn[x]$：节点编号为x的节点，第一次出现在dfs序中的位置
+    $dep[x]$：节点x在树中的深度
+    */
+
     int dfn[maxn], dep[maxn], st[maxn][30], cnt;
     void dfs(int x, int fa) {
         dfn[x] = ++cnt, dep[x] = dep[fa] + 1, st[cnt][0] = x;
@@ -51,7 +57,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    cin >> n >> m ;
+    cin >> n >> m >> s;
     memset(h, -1, sizeof h);
     for (int i = 1; i <= n - 1; i++) {
         int u, v;
@@ -59,7 +65,7 @@ int main() {
         add(u, v), add(v, u);
     }
 
-    plt.dfs(1, -1);
+    plt.dfs(s, -1);
     plt.RMQ();
 
     while (m--) {

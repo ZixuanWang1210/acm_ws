@@ -1,18 +1,26 @@
 #include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
-
 using namespace std;
 
+bool isdigit(char x){
+    if(x>='0'&&x<='9') return true;
+    return false;
+}
 
+bool isspace(char x){
+    if(x==' ') return true;
+    return false;
+}
+
+bool isalpha(char x){
+    if((x>='a'&&x<='z')||(x>='A'&&x<='Z')) return true;
+    return false;
+}
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
 
     string s;
-    cin>>s;
+    getline(cin,s);
     int alp=0,dig=0,els=0,spa=0;
     for(int i=0;i<s.length();i++){
         if(isdigit(s[i])) dig++;

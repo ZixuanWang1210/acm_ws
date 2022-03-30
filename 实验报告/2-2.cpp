@@ -1,9 +1,4 @@
 #include <bits/stdc++.h>
-#define endl "\n"
-#define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
-
 using namespace std;
 
 bool is_prime(int x){
@@ -19,9 +14,9 @@ int main(){
     int x;
     int cnt=0;
     while(cin>>x){
-        cnt++;
-        if(is_prime(x)) cout<<"Yes ";
-        else cout<<"No ";
+        // cnt++;
+        if(is_prime(x)) cout<<x<<" ",cnt++;
+        // else cout<<"No ";
         if(cnt%5==0) cout<<endl;
     }
 
