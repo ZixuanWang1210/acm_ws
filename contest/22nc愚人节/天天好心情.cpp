@@ -6,19 +6,12 @@
 
 using namespace std;
 
-string str[50]={};
 
-// vector<char> v[1000000];
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-        freopen("out5.txt","w",stdout);
-
-    for(int i=1;i<=44;i++){
-        string s; getline(cin,s);
-        cout<<'"'<<s<<'"'<<','<<endl;
-    }
-
+    cout<<"好心情没了"<<endl;
+    
 
     return 0;
 }

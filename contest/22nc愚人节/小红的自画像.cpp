@@ -63,18 +63,16 @@ int main(){
     for(int i=0;i<44;i++){
         string sss;
         // cout<<s[i]<<endl;
-        for(int j=0;j<=s[i].length()-1;j++){
+        for(int j=0;j<=90;j++){
             for(int k=1;k<=n;k++){
                 cout<<s[i][j];
                 sss+=s[i][j];
             }
-        }
             cout<<endl;
-        // for(int )
             for(int k=2;k<=n;k++){
                 cout<<sss<<endl;
             }
-        
+        }
         // string t;
         // for(int i=0;i<s.length();i++){
         //     cout<<s[i]<<s[i]<<s[i]<<s[i];
