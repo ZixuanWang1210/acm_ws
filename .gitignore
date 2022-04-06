@@ -4,6 +4,9 @@
 *.clang-format
 *.cbp
 *.cph
+a.exe
+temp.cpp
+test.cpp
 /.vscode
 /.obj
 tempCodeRunnerFile*

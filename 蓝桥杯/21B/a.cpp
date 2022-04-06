@@ -29,8 +29,8 @@ int main(){
     dfs(0,0,0);
     
     int cnt=0;
-    for(auto x:s){
-        if(x>0) cnt++;
+    for(std::set<int>::iterator x=s.begin();x!=s.end();x++){
+        if(*x>0) cnt++;
     }
     cout<<cnt<<endl;
     return 0;

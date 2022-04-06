@@ -6,19 +6,21 @@
 
 using namespace std;
 
-string str[50]={};
 
-// vector<char> v[1000000];
 
 int main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-        freopen("out5.txt","w",stdout);
 
-    for(int i=1;i<=44;i++){
-        string s; getline(cin,s);
-        cout<<'"'<<s<<'"'<<','<<endl;
+    int n; cin>>n;
+    int a,b,c; a=b=c=n/3;
+    int res=n%3;
+    if(res==1){
+        b++;
     }
-
+    else if(res==2){
+        b++,c++;
+    }
+    cout<<a*b*c<<endl;
 
     return 0;
 }
