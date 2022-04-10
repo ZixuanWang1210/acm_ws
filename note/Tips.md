@@ -345,3 +345,13 @@ for (int i = 1; i <= m; i++) {
 
 <img src="C:\Users\wangz\AppData\Roaming\Typora\typora-user-images\image-20220225124147475.png" alt="image-20220225124147475" style="zoom:50%;" />
 
+```cpp
+for (int i = 1; i <= n; i++) {
+	for (int j = i; j <= n; j += i) {
+
+	}
+}
+o(nlogn)
+```
+
+**小学奥赛有个结论，两质数之和是质数，没有其他可能，其中一个数必定是2。**
