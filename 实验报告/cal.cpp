@@ -9,10 +9,9 @@ void add() {
     int a, b;
     out("请输出两个整数a和b");
     cin >> a >> b;
-    out("a+b的值为");
-    cout << a + b << endl;
+    
     out("结果的十进制形式是：");
-    cout << a + b << endl;
+    cout << dec << a + b << endl;
     out("结果的八进制形式是：");
     cout << oct << a + b << endl;
     out("结果的十六进制形式是：");
@@ -25,10 +24,9 @@ void sub() {
     int a, b;
     out("请输出两个整数a和b");
     cin >> a >> b;
-    out("a-b的值为");
-    cout << a - b << endl;
+
     out("结果的十进制形式是：");
-    cout << a - b << endl;
+    cout << dec << a - b << endl;
     out("结果的八进制形式是：");
     cout << oct << a - b << endl;
     out("结果的十六进制形式是：");
@@ -226,10 +224,6 @@ void ppdi() {
     }
 }
 
-// int get_max(int a,int b){
-//     return a>b?a:b;
-// }
-
 int get_max(int &a, int &b) {
     if (a > b) {
         int t = b;
@@ -304,6 +298,62 @@ void word_cnt() {
     cout << cnt++ << endl;
 }
 
+void grade_sort(){
+	struct Stu{
+		int Sno;
+		string Sname;
+		int Sgrade;
+		bool operator<(const Stu &t){
+			return Sgrade<t.Sgrade;
+		}
+	};
+	Stu arr[20];
+	out("请依次输入每位学生的：学号、姓名、成绩");
+	for(int i=1;i<=10;i++){
+		int Sno,Sgrade;
+		string name;
+		cin>>Sno>>name>>Sgrade;
+		arr[i]={Sno,name,Sgrade};
+	}
+	int sum=0,avg=0;
+	for(int i=1;i<=10;i++){
+		for(int j=i;j<=10;j++){
+			if(arr[j]<arr[i]) swap(arr[i],arr[j]);
+		}
+		sum+=arr[i].Sgrade;
+	}
+	for(int i=1;i<=10;i++){
+		cout<<"学生姓名：	"<<arr[i].Sname<<endl;
+		cout<<"学生学号：	"<<arr[i].Sno<<endl;
+		cout<<"学生成绩：	"<<arr[i].Sgrade<<endl;
+		cout<<endl<<endl;
+	}
+	cout<<"学生的总成绩为：	"<<sum<<endl;
+	cout<<"学生的平均成绩为：	"<<(double)sum/10<<endl;
+}
+
+void up_grade(){
+	FILE *fp;
+	fp=fopen("D:\\my.txt","r+");
+	if(fp==NULL){
+		out("不能找到文件，请检查文件是否已经创建"); 
+	}
+	int grade[100]={0};
+
+	for(int i=1;i<=10;i++){
+		int soc=0;
+		fscanf(fp,"%d",&soc);
+		grade[i]=soc;
+	}
+	rewind(fp);
+	for(int i=1;i<=10;i++){
+		fprintf(fp,"%d\n",grade[i]+10);
+	}
+	out("成绩输出完成，请打开文件检查输出"); 
+	fclose(fp);
+	return;
+} 
+
 void home() {
     cout << R"( 
         ***********************************
@@ -327,7 +377,9 @@ void home() {
                      17 矩阵转置
                      18 求对角线和
                      19 统计单词个数
-                     20 退出
+                     22 学生成绩排序 
+                     23 学生成绩普涨10分 
+                     25 退出
         ***********************************
         )"
          << endl;
@@ -377,6 +429,8 @@ void opt() {
         mat_sum();
     else if (op == 19)
         word_cnt();
+    else if (op==22)  grade_sort();
+    else if(op==23) up_grade();
     else {
         exit(0);
     }

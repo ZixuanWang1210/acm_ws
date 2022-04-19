@@ -4,6 +4,7 @@
 *.clang-format
 *.cbp
 *.cph
+.cph
 a.exe
 temp.cpp
 test.cpp
