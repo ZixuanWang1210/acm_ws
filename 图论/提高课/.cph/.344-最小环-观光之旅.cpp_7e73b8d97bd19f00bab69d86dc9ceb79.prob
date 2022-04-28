@@ -1,1 +1,0 @@
-{"name":"Local: 344-最小环-观光之旅","url":"e:\\acm_ws\\图论\\提高课\\344-最小环-观光之旅.cpp","tests":[{"id":1647272429499,"input":"5 7\n1 4 1\n1 3 300\n3 1 10\n1 2 16\n2 3 100\n2 5 15\n5 3 20","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\图论\\提高课\\344-最小环-观光之旅.cpp","group":"local","local":true}

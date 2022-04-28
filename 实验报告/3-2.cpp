@@ -7,9 +7,14 @@ int arr[1000];
 int main() {
     cin >> n;
     for (int i = 1; i <= n; i++) cin >> arr[i];
-    cin >> arr[n + 1];
-    sort(arr + 1, arr + n + 2);
-    for (int i = 1; i <= n + 1; i++) cout << arr[i] << ' ';
+
+    int x;
+    cin >> x;
+    for (int i = 1; i <= n; i++)
+        if (x <= arr[i])
+            cout << x << ' ' << arr[i] << ' ', x = 0x3f3f3f3f;
+        else
+            cout << arr[i] << ' ';
 
     return 0;
 }

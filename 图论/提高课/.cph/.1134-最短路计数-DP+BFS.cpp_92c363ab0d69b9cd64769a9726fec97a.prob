@@ -1,1 +1,0 @@
-{"name":"Local: 1134-最短路计数-DP+BFS","url":"e:\\acm_ws\\图论\\提高课\\1134-最短路计数-DP+BFS.cpp","tests":[{"id":1646128269404,"input":"5 7\n1 2\n1 3\n2 4\n3 4\n2 3\n4 5\n4 5","output":"1\n1\n1\n2\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\图论\\提高课\\1134-最短路计数-DP+BFS.cpp","group":"local","local":true}

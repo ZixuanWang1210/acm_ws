@@ -1,1 +1,0 @@
-{"name":"Local: 1192-拓扑排序-奖金","url":"e:\\acm_ws\\图论\\提高课\\1192-拓扑排序-奖金.cpp","tests":[{"id":1646216651626,"input":"2 1\n1 2","output":"201"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\图论\\提高课\\1192-拓扑排序-奖金.cpp","group":"local","local":true}

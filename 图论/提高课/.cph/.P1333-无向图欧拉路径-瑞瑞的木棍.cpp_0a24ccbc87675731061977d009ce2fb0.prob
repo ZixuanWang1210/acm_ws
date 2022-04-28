@@ -1,1 +1,0 @@
-{"name":"Local: P1333-无向图欧拉路径-瑞瑞的木棍","url":"e:\\acm_ws\\图论\\提高课\\P1333-无向图欧拉路径-瑞瑞的木棍.cpp","tests":[{"id":1646314791148,"input":"blue red\nred violet\ncyan blue\nblue magenta\nmagenta cyan","output":"Possible"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\图论\\提高课\\P1333-无向图欧拉路径-瑞瑞的木棍.cpp","group":"local","local":true}
