@@ -4,6 +4,8 @@
 #include <bits/stdc++.h>
 typedef long long ll;
 typedef unsigned long long ull;
+#define pii pair<int,int>
+#define int long long
 #define debug_(ch, i) printf(#ch"[%d]: %d\n", i, ch[i])
 #define debug_m(mp, p) printf(#mp"[%d]: %d\n", p->first, p->second)
 using namespace std;
@@ -17,7 +19,7 @@ int qPow(int a, int b){
     return ans;
 }
 
-int main(){
+signed main(){
     ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
     #ifdef LOCAL
     freopen("in.txt","r",stdin);
