@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 void sol(int x) {
@@ -16,7 +15,8 @@ void sol(int x) {
 
 int main() {
     int x;
-    while (cin >> x) sol(x);
-
+    cin >> x;
+    sol(x);
+    
     return 0;
 }
