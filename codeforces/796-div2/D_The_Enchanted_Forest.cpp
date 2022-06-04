@@ -16,7 +16,7 @@ void sol(){
     }
     int ans=0;
     for(int i=min(n,k);i<=n;i++){
-        int idx=max(0ll,i-k-1);
+        int idx=max(0ll,i-k);
         ans=max(ans,s[i]-s[idx]);
     }
     if(k>n)
