@@ -3,3 +3,5 @@
 一个字符串围成环，求henu的数量
 
 https://ac.nowcoder.com/acm/contest/11228/C x任意
+
+枚举中间变量，ST表问题，减少枚举次数 [1](https://codeforces.com/contest/1686/problem/C) [2](https://www.luogu.com.cn/problem/P3722)

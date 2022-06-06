@@ -1,29 +1,24 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-
-int main(){
-    char  *str[100];
-    char *p[100];
-
-    int cnt; cin>>cnt;
-    for(int i=1;i<=cnt;i++){
-        cin>>str[cnt];
-        p[i]=str[i];
-    }
-    
-    for(int i=1;i<=cnt;i++){
-        for(int j=i+1;j<=cnt;j++){
-            if(*str[i]>*str[j]){
-                swap(p[i],p[j]);
+void sort(char *b[4]) {
+    char *arr[4];
+    for (int i = 0; i < 4; i++) arr[i] = b[i];
+    char *tmp;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 3 - i; j++) {
+            if (*arr[j + 1] < *arr[j]) {
+                tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
             }
         }
     }
-
-    for(int i=1;i<=cnt;i++){
-        cout<<*p[i]<<endl;
+    for (int i = 0; i < 4; i++) {
+        cout << arr[i] << " ";
     }
-    
-
-
+}
+int main() {
+    char *name[4] = {"Follow", "Great", "FORTRAN", "Computer"};
+    sort(name);
     return 0;
 }
