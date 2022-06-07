@@ -1,1 +1,0 @@
-{"name":"Local: c","url":"e:\\acm_ws\\codeforces\\774-div2\\c.cpp","tests":[{"id":1646528505747,"input":"4\n7\n11\n240\n17179869184","output":"2\n3\n4\n1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\acm_ws\\codeforces\\774-div2\\c.cpp","group":"local","local":true}
