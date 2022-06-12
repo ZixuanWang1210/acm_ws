@@ -7,14 +7,14 @@ void out(string s) {
 
 void add() {
     int a, b;
-    out("ÇëÊä³öÁ½¸öÕûÊıaºÍb");
+    out("è¯·è¾“å‡ºä¸¤ä¸ªæ•´æ•°aå’Œb");
     cin >> a >> b;
-    
-    out("½á¹ûµÄÊ®½øÖÆĞÎÊ½ÊÇ£º");
+
+    out("ç»“æœçš„åè¿›åˆ¶å½¢å¼æ˜¯ï¼š");
     cout << dec << a + b << endl;
-    out("½á¹ûµÄ°Ë½øÖÆĞÎÊ½ÊÇ£º");
+    out("ç»“æœçš„å…«è¿›åˆ¶å½¢å¼æ˜¯ï¼š");
     cout << oct << a + b << endl;
-    out("½á¹ûµÄÊ®Áù½øÖÆĞÎÊ½ÊÇ£º");
+    out("ç»“æœçš„åå…­è¿›åˆ¶å½¢å¼æ˜¯ï¼š");
     cout << hex << a + b << endl;
 
     return;
@@ -22,81 +22,81 @@ void add() {
 
 void sub() {
     int a, b;
-    out("ÇëÊä³öÁ½¸öÕûÊıaºÍb");
+    out("è¯·è¾“å‡ºä¸¤ä¸ªæ•´æ•°aå’Œb");
     cin >> a >> b;
 
-    out("½á¹ûµÄÊ®½øÖÆĞÎÊ½ÊÇ£º");
+    out("ç»“æœçš„åè¿›åˆ¶å½¢å¼æ˜¯ï¼š");
     cout << dec << a - b << endl;
-    out("½á¹ûµÄ°Ë½øÖÆĞÎÊ½ÊÇ£º");
+    out("ç»“æœçš„å…«è¿›åˆ¶å½¢å¼æ˜¯ï¼š");
     cout << oct << a - b << endl;
-    out("½á¹ûµÄÊ®Áù½øÖÆĞÎÊ½ÊÇ£º");
+    out("ç»“æœçš„åå…­è¿›åˆ¶å½¢å¼æ˜¯ï¼š");
     cout << hex << a - b << endl;
     return;
 }
 
 void mul() {
     double a, b;
-    out("ÇëÊä³öÁ½¸ö¸¡µãÊıaºÍb");
+    out("è¯·è¾“å‡ºä¸¤ä¸ªæµ®ç‚¹æ•°aå’Œb");
     cin >> a >> b;
-    out("a*bµÄÖµÎª");
+    out("a*bçš„å€¼ä¸º");
     cout << a * b << endl;
-    out("³Ë·¨½á¹ûµÄÖ¸ÊıĞÎÊ½ÊÇ£º");
+    out("ä¹˜æ³•ç»“æœçš„æŒ‡æ•°å½¢å¼æ˜¯ï¼š");
     printf("%E\n", a * b);
     return;
 }
 
 void div() {
     int a, b;
-    out("ÇëÊä³öÁ½¸öÕûÊıaºÍb");
+    out("è¯·è¾“å‡ºä¸¤ä¸ªæ•´æ•°aå’Œb");
     cin >> a >> b;
     if (b == 0) {
-        out("×¢Òâ£¡b²»ÄÜÎª0.ÇëÖØĞÂÊäÈë");
+        out("æ³¨æ„ï¼bä¸èƒ½ä¸º0.è¯·é‡æ–°è¾“å…¥");
         div();
         return;
     }
-    out("a/bµÄÖµÎª");
+    out("a/bçš„å€¼ä¸º");
     cout << (double)a / b << endl;
-    out("³Ë·¨½á¹ûµÄÖ¸ÊıĞÎÊ½ÊÇ£º");
+    out("ä¹˜æ³•ç»“æœçš„æŒ‡æ•°å½¢å¼æ˜¯ï¼š");
     printf("%E\n", a / b);
     return;
 }
 
 void mod() {
     int a, b;
-    out("ÇëÊä³öÁ½¸öÕûÊıaºÍb");
+    out("è¯·è¾“å‡ºä¸¤ä¸ªæ•´æ•°aå’Œb");
     cin >> a >> b;
     if (b == 0) {
-        out("×¢Òâ£¡b²»ÄÜÎª0.ÇëÖØĞÂÊäÈë");
+        out("æ³¨æ„ï¼bä¸èƒ½ä¸º0.è¯·é‡æ–°è¾“å…¥");
         mod();
         return;
     }
-    out("a%bµÄÖµÎª");
+    out("a%bçš„å€¼ä¸º");
     cout << a % b << endl;
     return;
 }
 
 void get_area() {
     int r;
-    out("ÇëÊäÔ²µÄ°ë¾¶r");
+    out("è¯·è¾“åœ†çš„åŠå¾„r");
     cin >> r;
     const double PI = 3.1415926;
-    out("Ô²µÄÃæ»ıÎª£º");
+    out("åœ†çš„é¢ç§¯ä¸ºï¼š");
     cout << (double)r * PI << endl;
-    out("±£ÁôÁ½Î»Ğ¡ÊıµÄ½á¹ûÊÇ£º");
+    out("ä¿ç•™ä¸¤ä½å°æ•°çš„ç»“æœæ˜¯ï¼š");
     cout << fixed << setprecision(2) << (double)r * PI << endl;
     return;
 }
 
 void split() {
     int x;
-    out("ÇëÊäÈëĞèÒª½øĞĞ²ğ·ÖµÄÕıÕûÊı");
+    out("è¯·è¾“å…¥éœ€è¦è¿›è¡Œæ‹†åˆ†çš„æ­£æ•´æ•°");
     cin >> x;
     if (x < 0 || x > 999) {
-        out("ÊäÈë²»ºÏ·¨£¬ÇëÖØĞÂÊäÈëÈıÎ»ÒÔÄÚµÄÕıÕûÊı");
+        out("è¾“å…¥ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥ä¸‰ä½ä»¥å†…çš„æ­£æ•´æ•°");
         split();
         return;
     }
-    string s[3] = {"¸ÃÕûÊıµÄ¸öÎ»Îª£º", "¸ÃÕûÊıµÄÊ®Î»Îª£º", "¸ÃÕûÊıµÄ°ÙÎ»Îª£º"};
+    string s[3] = {"è¯¥æ•´æ•°çš„ä¸ªä½ä¸ºï¼š", "è¯¥æ•´æ•°çš„åä½ä¸ºï¼š", "è¯¥æ•´æ•°çš„ç™¾ä½ä¸ºï¼š"};
     int idx = 0;
     while (x) {
         int t = x % 10;
@@ -109,11 +109,11 @@ void split() {
 
 void grade() {
     int x;
-    out("ÇëÊäÈëÑ§ÉúµÄ³É¼¨");
+    out("è¯·è¾“å…¥å­¦ç”Ÿçš„æˆç»©");
     cin >> x;
-    cout << "Ñ§ÉúµÄ³É¼¨µÈ¼¶Îª";
+    cout << "å­¦ç”Ÿçš„æˆç»©ç­‰çº§ä¸º";
     if (x < 0 || x > 100) {
-        out("ÊäÈëÊı¾İ²»ºÏ·¨£¬ÇëÖØĞÂÊäÈë");
+        out("è¾“å…¥æ•°æ®ä¸åˆæ³•ï¼Œè¯·é‡æ–°è¾“å…¥");
         grade();
         return;
     }
@@ -143,30 +143,30 @@ void grade() {
 }
 
 void judge_leap() {
-    out("ÇëÊäÈëËùĞè¼ÆËãµÄÄê·İ");
+    out("è¯·è¾“å…¥æ‰€éœ€è®¡ç®—çš„å¹´ä»½");
     int year;
     cin >> year;
     if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        cout << year << " is ÈòÄê" << endl;
+        cout << year << " is é—°å¹´" << endl;
     } else
-        cout << year << " is Æ½Äê" << endl;
+        cout << year << " is å¹³å¹´" << endl;
     return;
 }
 
 void get_sum1() {
-    out("ÇëÊäÈë¼ÆËã·¶Î§ n");
+    out("è¯·è¾“å…¥è®¡ç®—èŒƒå›´ n");
     int n;
     cin >> n;
     int sum = 0;
     for (int i = 1; i <= n; i++) {
         if (i & 1) sum += i;
     }
-    cout << "1µ½ÊäÈëÊıÖ®¼äµÄÆæÊıºÍ£º" << sum << endl;
+    cout << "1åˆ°è¾“å…¥æ•°ä¹‹é—´çš„å¥‡æ•°å’Œï¼š" << sum << endl;
     return;
 }
 
 void get_sum2() {
-    out("ÇëÊäÈë¼ÆËã·¶Î§ n");
+    out("è¯·è¾“å…¥è®¡ç®—èŒƒå›´ n");
     int n;
     cin >> n;
     int sum = 0;
@@ -174,33 +174,33 @@ void get_sum2() {
     while (n--) {
         if (!(n & 1)) sum += n;
     }
-    cout << "1µ½ÊäÈëÊıÖ®¼äµÄÆæÊıºÍ£º" << sum << endl;
+    cout << "1åˆ°è¾“å…¥æ•°ä¹‹é—´çš„å¥‡æ•°å’Œï¼š" << sum << endl;
     return;
 }
 
 void get_sum3() {
-    out("ÇëÊäÈë¼ÆËã·¶Î§ n");
+    out("è¯·è¾“å…¥è®¡ç®—èŒƒå›´ n");
     int n;
     cin >> n;
     int sum = 0;
     do {
         if (!(n & 3)) sum += n;
     } while (n--);
-    cout << "1µ½ÊäÈëÊıÖ®¼äµÄ3µÄ±¶ÊıµÄºÍ£º" << sum << endl;
+    cout << "1åˆ°è¾“å…¥æ•°ä¹‹é—´çš„3çš„å€æ•°çš„å’Œï¼š" << sum << endl;
     return;
 }
 
 void get_from_to() {
-    out("ÇëÊäÈëÁ½¸öÕûÊı±íÊ¾ÊıµÄ·¶Î§");
+    out("è¯·è¾“å…¥ä¸¤ä¸ªæ•´æ•°è¡¨ç¤ºæ•°çš„èŒƒå›´");
     int l, r;
     cin >> l >> r;
     for (int i = l; i <= r; i++) {
         if (!(i % 3) && !(i % 5)) {
-            cout << "Õâ¸öÊıÊÇ" << i << endl;
+            cout << "è¿™ä¸ªæ•°æ˜¯" << i << endl;
             return;
         }
     }
-    cout << "ÔÚÕâ¸ö·¶Î§ÖĞÃ»ÓĞÊ÷Âú×ãÌõ¼ş" << endl;
+    cout << "åœ¨è¿™ä¸ªèŒƒå›´ä¸­æ²¡æœ‰æ ‘æ»¡è¶³æ¡ä»¶" << endl;
     return;
 }
 
@@ -218,7 +218,7 @@ bool narcissus(int a) {
 }
 
 void ppdi() {
-    out("Ë®ÏÉ»¨ÊıÎª");
+    out("æ°´ä»™èŠ±æ•°ä¸º");
     for (int i = 100; i <= 999; i++) {
         if (narcissus(i)) cout << i << ' ';
     }
@@ -233,17 +233,17 @@ int get_max(int &a, int &b) {
 }
 
 void get_max() {
-    out("ÇëÊäÈëÁ½¸öÕûÊı a b");
-    out("ÇëÊäÈëÁ½¸öÕûÊıÖĞ½Ï´óµÄÎª");
+    out("è¯·è¾“å…¥ä¸¤ä¸ªæ•´æ•° a b");
+    out("è¯·è¾“å…¥ä¸¤ä¸ªæ•´æ•°ä¸­è¾ƒå¤§çš„ä¸º");
     int a, b;
     cin >> a >> b;
     cout << get_max(a, b) << endl;
 }
 
 void bubble_sort() {
-    out("ÇëÊäÈë10¸öÊı");
+    out("è¯·è¾“å…¥10ä¸ªæ•°");
     int a[100];
-    out("Ã°ÅİÅÅĞòºóµÄ½á¹ûÊÇ£º");
+    out("å†’æ³¡æ’åºåçš„ç»“æœæ˜¯ï¼š");
     for (int i = 1; i <= 10; i++) cin >> a[i];
     for (int i = 1; i < 10; i++) {
         for (int j = i + 1; j < 10; j++) {
@@ -255,13 +255,13 @@ void bubble_sort() {
 
 void trans() {
     int a[10][10];
-    out("ÇëÊäÈëÒ»¸ö3x4µÄ¾ØÕó");
+    out("è¯·è¾“å…¥ä¸€ä¸ª3x4çš„çŸ©é˜µ");
     for (int i = 1; i <= 3; i++) {
         for (int j = 1; j <= 4; j++) {
             cin >> a[j][i];
         }
     }
-    out("¸Ã¾ØÕóµÄ×ªÖÃÎª");
+    out("è¯¥çŸ©é˜µçš„è½¬ç½®ä¸º");
     for (int i = 1; i <= 4; i++) {
         for (int j = 1; j <= 3; j++) {
             cout << a[i][j] << ' ';
@@ -274,7 +274,7 @@ void trans() {
 void mat_sum() {
     int a[100][100];
     int sum = 0;
-    out("ÇëÊäÈë3x3µÄ¾ØÕó");
+    out("è¯·è¾“å…¥3x3çš„çŸ©é˜µ");
     for (int i = 1; i <= 3; i++) {
         for (int j = 1; j <= 3; j++) {
             cin >> a[i][j];
@@ -287,99 +287,126 @@ void mat_sum() {
 
 void word_cnt() {
     string s;
-    out("ÇëÊäÈëÒ»¾ä»°");
+    out("è¯·è¾“å…¥ä¸€å¥è¯");
     getline(cin, s);
     getline(cin, s);
     int cnt = 0;
     for (int i = 0; i < s.length(); i++) {
         if (s[i] == ' ') cnt++;
     }
-    out("µ¥´ÊµÄ¸öÊıÊ±£º");
+    out("å•è¯çš„ä¸ªæ•°æ—¶ï¼š");
     cout << cnt++ << endl;
 }
 
-void grade_sort(){
-	struct Stu{
-		int Sno;
-		string Sname;
-		int Sgrade;
-		bool operator<(const Stu &t){
-			return Sgrade<t.Sgrade;
-		}
-	};
-	Stu arr[20];
-	out("ÇëÒÀ´ÎÊäÈëÃ¿Î»Ñ§ÉúµÄ£ºÑ§ºÅ¡¢ĞÕÃû¡¢³É¼¨");
-	for(int i=1;i<=10;i++){
-		int Sno,Sgrade;
-		string name;
-		cin>>Sno>>name>>Sgrade;
-		arr[i]={Sno,name,Sgrade};
-	}
-	int sum=0,avg=0;
-	for(int i=1;i<=10;i++){
-		for(int j=i;j<=10;j++){
-			if(arr[j]<arr[i]) swap(arr[i],arr[j]);
-		}
-		sum+=arr[i].Sgrade;
-	}
-	for(int i=1;i<=10;i++){
-		cout<<"Ñ§ÉúĞÕÃû£º	"<<arr[i].Sname<<endl;
-		cout<<"Ñ§ÉúÑ§ºÅ£º	"<<arr[i].Sno<<endl;
-		cout<<"Ñ§Éú³É¼¨£º	"<<arr[i].Sgrade<<endl;
-		cout<<endl<<endl;
-	}
-	cout<<"Ñ§ÉúµÄ×Ü³É¼¨Îª£º	"<<sum<<endl;
-	cout<<"Ñ§ÉúµÄÆ½¾ù³É¼¨Îª£º	"<<(double)sum/10<<endl;
+void grade_sort() {
+    struct Stu {
+        int Sno;
+        string Sname;
+        int Sgrade;
+        bool operator<(const Stu &t) {
+            return Sgrade < t.Sgrade;
+        }
+    };
+    Stu arr[20];
+    out("è¯·ä¾æ¬¡è¾“å…¥æ¯ä½å­¦ç”Ÿçš„ï¼šå­¦å·ã€å§“åã€æˆç»©");
+    for (int i = 1; i <= 10; i++) {
+        int Sno, Sgrade;
+        string name;
+        cin >> Sno >> name >> Sgrade;
+        arr[i] = {Sno, name, Sgrade};
+    }
+    int sum = 0, avg = 0;
+    for (int i = 1; i <= 10; i++) {
+        for (int j = i; j <= 10; j++) {
+            if (arr[j] < arr[i]) swap(arr[i], arr[j]);
+        }
+        sum += arr[i].Sgrade;
+    }
+    for (int i = 1; i <= 10; i++) {
+        cout << "å­¦ç”Ÿå§“åï¼š	" << arr[i].Sname << endl;
+        cout << "å­¦ç”Ÿå­¦å·ï¼š	" << arr[i].Sno << endl;
+        cout << "å­¦ç”Ÿæˆç»©ï¼š	" << arr[i].Sgrade << endl;
+        cout << endl << endl;
+    }
+    cout << "å­¦ç”Ÿçš„æ€»æˆç»©ä¸ºï¼š	" << sum << endl;
+    cout << "å­¦ç”Ÿçš„å¹³å‡æˆç»©ä¸ºï¼š	" << (double)sum / 10 << endl;
 }
 
-void up_grade(){
-	FILE *fp;
-	fp=fopen("D:\\my.txt","r+");
-	if(fp==NULL){
-		out("²»ÄÜÕÒµ½ÎÄ¼ş£¬Çë¼ì²éÎÄ¼şÊÇ·ñÒÑ¾­´´½¨"); 
-	}
-	int grade[100]={0};
+void up_grade() {
+    FILE *fp;
+    fp = fopen("D:\\my.txt", "r+");
+    if (fp == NULL) {
+        out("ä¸èƒ½æ‰¾åˆ°æ–‡ä»¶ï¼Œè¯·æ£€æŸ¥æ–‡ä»¶æ˜¯å¦å·²ç»åˆ›å»º");
+    }
+    int grade[100] = {0};
 
-	for(int i=1;i<=10;i++){
-		int soc=0;
-		fscanf(fp,"%d",&soc);
-		grade[i]=soc;
-	}
-	rewind(fp);
-	for(int i=1;i<=10;i++){
-		fprintf(fp,"%d\n",grade[i]+10);
-	}
-	out("³É¼¨Êä³öÍê³É£¬Çë´ò¿ªÎÄ¼ş¼ì²éÊä³ö"); 
-	fclose(fp);
-	return;
-} 
+    for (int i = 1; i <= 10; i++) {
+        int soc = 0;
+        fscanf(fp, "%d", &soc);
+        grade[i] = soc;
+    }
+    rewind(fp);
+    for (int i = 1; i <= 10; i++) {
+        fprintf(fp, "%d\n", grade[i] + 10);
+    }
+    out("æˆç»©è¾“å‡ºå®Œæˆï¼Œè¯·æ‰“å¼€æ–‡ä»¶æ£€æŸ¥è¾“å‡º");
+    fclose(fp);
+    return;
+}
+
+int init_chain() {
+    struct Student {
+        int num;
+        float score;
+        struct Student *next;
+    };
+    struct Student a, b, c, *head, *p;
+    a.num = 101;
+    a.score = 89.5;
+    b.num = 103;
+    b.score = 90;
+    c.num = 107;
+    c.score = 85;
+    head = &a;
+    a.next = &b;
+    b.next = &c;
+    c.next = NULL;
+    p = head;
+    do {
+        printf("%1d %5.1f\n", p->num, p->score);
+        p = p->next;
+    } while (p != NULL);
+    return 0;
+}
 
 void home() {
     cout << R"( 
         ***********************************
-                     Ğ¡Ğ¡¼ÆËãÆ÷             
-                     1 ¼Ó·¨                 
-                     2 ¼õ·¨                 
-                     3 ³Ë·¨                 
-                     4 ³ı·¨   
-                     5 È¡Ä£ÔËËã
-                     6 ¼ÆËãÔ²Ãæ»ı
-                     7 ÅĞ¶ÏÊı×ÖµÄÎ»Êı                      
-                     8 ÅĞ¶ÏÈòÄê                              
-                     9 ³É¼¨×ª»»                              
-                     10 ¼ÆËã´Ó1µ½ÊäÈëÊıÖ®¼äµÄÆæÊıºÍ £¨for£©          
-                     11 ¼ÆËã´Ó1µ½ÊäÈëÊıÖ®¼äµÄÅ¼ÊıºÍ £¨while£©          
-                     12 Êä³ö´Ó1µ½ÊäÈëÊıÖ®¼äËùÓĞ3µÄ±¶Êı £¨do-while£©          
-                     13 Çó¼´±»3Õû³ıÓÖ±»5Õû³ıµÄÊı          
-                     14 ÇóË®ÏÉ»¨Êı
-                     15 Çó×î´ó×îĞ¡Öµ 
-                     16 Ã°ÅİÅÅĞò
-                     17 ¾ØÕó×ªÖÃ
-                     18 Çó¶Ô½ÇÏßºÍ
-                     19 Í³¼Æµ¥´Ê¸öÊı
-                     22 Ñ§Éú³É¼¨ÅÅĞò 
-                     23 Ñ§Éú³É¼¨ÆÕÕÇ10·Ö 
-                     25 ÍË³ö
+                     å°å°è®¡ç®—å™¨             
+                     1 åŠ æ³•                 
+                     2 å‡æ³•                 
+                     3 ä¹˜æ³•                 
+                     4 é™¤æ³•   
+                     5 å–æ¨¡è¿ç®—
+                     6 è®¡ç®—åœ†é¢ç§¯
+                     7 åˆ¤æ–­æ•°å­—çš„ä½æ•°                      
+                     8 åˆ¤æ–­é—°å¹´                              
+                     9 æˆç»©è½¬æ¢                              
+                     10 è®¡ç®—ä»1åˆ°è¾“å…¥æ•°ä¹‹é—´çš„å¥‡æ•°å’Œ ï¼ˆforï¼‰          
+                     11 è®¡ç®—ä»1åˆ°è¾“å…¥æ•°ä¹‹é—´çš„å¶æ•°å’Œ ï¼ˆwhileï¼‰          
+                     12 è¾“å‡ºä»1åˆ°è¾“å…¥æ•°ä¹‹é—´æ‰€æœ‰3çš„å€æ•° ï¼ˆdo-whileï¼‰          
+                     13 æ±‚å³è¢«3æ•´é™¤åˆè¢«5æ•´é™¤çš„æ•°          
+                     14 æ±‚æ°´ä»™èŠ±æ•°
+                     15 æ±‚æœ€å¤§æœ€å°å€¼ 
+                     16 å†’æ³¡æ’åº
+                     17 çŸ©é˜µè½¬ç½®
+                     18 æ±‚å¯¹è§’çº¿å’Œ
+                     19 ç»Ÿè®¡å•è¯ä¸ªæ•°
+                     20 åˆ›å»ºé™æ€é“¾è¡¨
+                     21 è¾“å‡ºé™æ€é“¾è¡¨
+                     22 å­¦ç”Ÿæˆç»©æ’åº 
+                     23 å­¦ç”Ÿæˆç»©æ™®æ¶¨10åˆ† 
+                     25 é€€å‡º
         ***********************************
         )"
          << endl;
@@ -388,7 +415,7 @@ void home() {
 
 void opt() {
     int op;
-    out("ÇëÊäÈëÄ£Ê½");
+    out("è¯·è¾“å…¥æ¨¡å¼");
     cin >> op;
     system("cls");
     if (op == 1)
@@ -429,14 +456,20 @@ void opt() {
         mat_sum();
     else if (op == 19)
         word_cnt();
-    else if (op==22)  grade_sort();
-    else if(op==23) up_grade();
+    else if (op == 22)
+        grade_sort();
+    else if (op == 23)
+        up_grade();
+    else if (op == 20)
+        init_chain();
+    else if (op == 21)
+        init_chain();
     else {
         exit(0);
     }
     cout << endl;
     out("====================");
-    out("ÊäÈë1·µ»ØÄ¿Â¼,ÊäÈë2ÍË³ö³ÌĞò");
+    out("è¾“å…¥1è¿”å›ç›®å½•,è¾“å…¥2é€€å‡ºç¨‹åº");
     cout << "====================" << endl;
 
     int t;
