@@ -11,29 +11,24 @@
 using namespace std;
 
 void sol(){
-    int x; cin>>x;
-    int re=x;
-    set<int> st;
+    string s; cin>>s;
+    int cnt[20]={0};
     int sum=0;
-    while(x){
-        int t=x%10;
-        st.insert(t);
-        sum+=t;
-        x/=10;
-    }
-    if(sum%3==0){
-        if(st.count(3)==1){
-            
-        }
-    }
-    if(st.count(sum%3)==1){
-        if(x>=10&&x<100){
-            cout<<"kou"<<endl;
-            return;
-        }
-        cout<<"yukari"<<endl;
+    for(auto x:s){
+        int xx=x-'0';
+        if(xx) cnt[xx%3]++;
+        sum+=xx;
     }
 
+    if(!cnt[sum%3]) {
+        cout<<"yukari";
+        return;
+    }
+    cnt[sum%3]--;
+    if(cnt[1]==cnt[2]&&cnt[0]){
+        cout<<"kou";
+    }
+    else cout<<"yukari";
 }
 
 signed main(){
