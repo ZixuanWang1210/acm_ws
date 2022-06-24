@@ -12,5 +12,5 @@ https://www.luogu.com.cn/problem/solution/P5994 最小生成树好题
 
 ![image-20220611085951274](https://s2.loli.net/2022/06/11/FMgZQwfJKvRt2Nu.png)
 
-
+高阶[差分](https://ac.nowcoder.com/acm/contest/19483/H)，分糖果类似，加任意等差数列
 
