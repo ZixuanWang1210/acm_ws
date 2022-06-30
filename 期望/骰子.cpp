@@ -11,9 +11,9 @@
 
 using namespace std;
 
-const int maxn=1e3+10;
+const int maxn=1e4+10;
 double f[maxn][maxn];
-double w[maxn];
+int w[maxn];
 int n;
 
 double dp(int x,int y){
@@ -21,10 +21,10 @@ double dp(int x,int y){
     if(x==0&&y==0) return 1;
     else if(x==0) return 0;
     double &v=f[x][y];
-    // v=1.0;
+    v=1.0;
 
     for(int i=1;i<=w[x];i++){
-        if(y-i>=0) v+=(double)1/w[x]*(dp(x-1,y-i)+1);
+        if(y-i>0) v+=1/w[x]*dp(x-1,y-i);
     }
     return v;
 }

@@ -1,3 +1,20 @@
+#include <bits/stdc++.h>
+#define endl "\n"
+#define debug(x) cout << #x << ": -----> " << x << endl;
+#define inf 0x3f3f3f3f
+#define pii pair<int,int>
+#define all(x) x.begin()+1,x.end()
+#define _all(x) x.begin(),x.end()
+#define mod 998244353
+#define ll long long
+// #define int long long
+
+using namespace std;
+
+int n;
+const int maxn=2e6+10;
+string s[maxn];
+
 struct KMP{
     int nxt[maxn];int len;
     char t[maxn];
@@ -38,7 +55,7 @@ struct KMP{
         }
         return start_pos;
     }
-    void debug(){
+    void _debug(){
         for (int i=0;i<=len;i++){
             printf("[debug] nxt[%d]=%d\n",i,nxt[i]);
         }
@@ -65,3 +82,48 @@ struct KMP{
         return periodic_loop()[0];
     }
 } kmp;
+
+
+
+void sol(){
+    cin>>n;
+    int idx=-1;
+    int len=inf;
+    for(int i=1;i<=n;i++){
+        cin>>s[i];
+        if(len>s[i].length()){
+            len=s[i].length();
+            idx=i;
+        }
+        // else if(len==s[i].length()){
+        //     if(s[idx]!=s[i]){
+        //         cout<<0<<endl;
+        //         return;
+        //     }
+        // }
+    }   
+    int res=1;
+    kmp.init(s[idx]);
+    for(int i=1;i<=n;i++){
+        if(i==idx) continue;
+        res=res*kmp.match(s[i]).size()%mod;
+    }
+
+    for(int i=1;i<=n;i++){
+        if(s[i]!=s[idx]) cout<<0<<endl;
+        else cout<<res<<endl;
+    }
+
+}
+
+signed main(){
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+
+    int _=1;
+    // cin>>_;
+    while(_--){
+        sol();
+    }
+
+    return 0;
+}
