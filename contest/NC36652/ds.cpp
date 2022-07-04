@@ -14,30 +14,31 @@ using namespace std;
 const int maxn=1100;
 int h[maxn],e[maxn],ne[maxn],idx;
 int n;
-int dep[maxn],siz[maxn],cnt[maxn];
+int dep[maxn],siz[maxn],cnt[maxn],_fa[maxn];
 int d[maxn];
 
 void add(int a,int b){
     e[idx]=b,ne[idx]=h[a];h[a]=idx++;
 }
 
-int cnt_z=0;
-void dfs(int u,int fa){
+void init(int u,int fa){
+    // siz[u]=1;
     for(int i=h[u];~i;i=ne[i]){
         int j=e[i];
         if(j==fa) continue;
+        dep[j]=dep[u]+1;
+        init(j,u);
         siz[u]++;
-        // cout<<u<<endl;
-        dfs(j,u);
     }
 }
 
-void dfs1(int u,int fa){
+void dfs(int u,int fa){
+    map<int,int> mp;
     for(int i=h[u];~i;i=ne[i]){
         int j=e[i];
         if(j==fa) continue;
-        cnt_z+=(max(0,cnt[j]-1));
-        dfs(j,u);
+        mp[siz[j]]++;
+        init(j,u);
     }
 }
 
@@ -49,14 +50,23 @@ void sol(){
         add(x,y),add(y,x);
         d[x]++,d[y]++;
     }
+
+    // dep[1]=1;
+    init(1,-1);
+
+    dfs(1,-1);
+    
+    int ans=0;
     for(int i=1;i<=n;i++){
-        if(d[i]==1) cnt_z++;
+        cout<<dep[i]<<' ';
     }
-
-    dfs(1,0);
-    dfs1(1,0);
-    cout<<cnt_z<<endl;
-
+    for(int i=1;i<=n;i++){
+        // if(d[i]==1) ans+=dep[i];
+        // else ans-=(dep[i])*(siz[i]-1);
+        if(siz[i]==0) ans+=dep[i];
+        else ans=ans-(siz[i]-1)*dep[i];
+    }
+    cout<<ans<<endl;
 
 }
 

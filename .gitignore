@@ -9,6 +9,7 @@ a.exe
 temp.cpp
 debug.cpp
 test.cpp
+*.txt
 /.vscode
 /.obj
 tempCodeRunnerFile*

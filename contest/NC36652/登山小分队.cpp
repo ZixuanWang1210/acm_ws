@@ -7,14 +7,14 @@
 #define _all(x) x.begin(),x.end()
 #define mod 1000000007
 #define ll long long
-// #define int long long
+#define int long long
 
 using namespace std;
 
 const int maxn=1100;
 int h[maxn],e[maxn],ne[maxn],idx;
 int n;
-int dep[maxn],siz[maxn],cnt[maxn];
+int dep[maxn],siz[maxn],cnt[maxn],_fa[maxn];
 int d[maxn];
 
 void add(int a,int b){
@@ -23,6 +23,7 @@ void add(int a,int b){
 
 int cnt_z=0;
 void dfs(int u,int fa){
+    _fa[u]=fa;
     for(int i=h[u];~i;i=ne[i]){
         int j=e[i];
         if(j==fa) continue;
@@ -36,7 +37,7 @@ void dfs1(int u,int fa){
     for(int i=h[u];~i;i=ne[i]){
         int j=e[i];
         if(j==fa) continue;
-        cnt_z+=(max(0,cnt[j]-1));
+        cnt_z+=(max(0ll,cnt[j]-1));
         dfs(j,u);
     }
 }
@@ -52,8 +53,17 @@ void sol(){
     for(int i=1;i<=n;i++){
         if(d[i]==1) cnt_z++;
     }
-
     dfs(1,0);
+    bool bz=true;
+    for(int i=1;i<=n;i++){
+        if(d[i]==1&&_fa[i]==1&&bz){
+            bz=false;
+        }
+        else if(d[i]==1&&_fa[i]==1&&!bz){
+            cnt_z--;
+        }
+    }
+    // cout<<cnt_z<<endl;
     dfs1(1,0);
     cout<<cnt_z<<endl;
 
