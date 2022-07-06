@@ -1,3 +1,15 @@
+#include <bits/stdc++.h>
+#define endl "\n"
+#define debug(x) cout << #x << ": -----> " << x << endl;
+#define inf 0x3f3f3f3f
+#define pii pair<int,int>
+#define all(x) x.begin()+1,x.end()
+#define _all(x) x.begin(),x.end()
+#define mod 1000000007
+// #define ll long long
+// #define int long long
+
+using namespace std;
 template <int MOD_> struct modnum {
 	static constexpr int MOD = MOD_;
 	static_assert(MOD_ > 0, "MOD must be positive");
@@ -87,3 +99,54 @@ template <typename T> T pow(T a, long long b) {
  
 using Mint = modnum<int(1e9) + 7>;
 
+
+
+const int maxn=2e5+10;
+
+void sol(){
+    int n; cin>>n;
+    vector<int> v(n+1);
+    map<int,int> mp;
+    for(int i=1;i<=n;i++){
+        cin>>v[i];
+        mp[v[i]]=i-1;
+    }
+
+    int l=mp[0],r=mp[0];
+    bool fi=true;
+    int cnt=0;
+    Mint res=1;
+    for(auto x:mp){
+        if(fi){
+            fi=false;
+            continue;
+        }
+        if(x.second>r){
+            cnt+=x.second-r-1;
+            r=x.second;
+        }
+        else if(x.second<l){
+            cnt+=l-x.second-1;
+            l=x.second;
+        }
+        else{
+            res*=cnt;
+            cnt--;
+        }
+    }
+    cout<<res<<endl;
+
+}
+
+signed main(){
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+
+    int _=1;
+
+    cin>>_;
+    while(_--){
+        sol();
+    }
+
+    return 0;
+}
