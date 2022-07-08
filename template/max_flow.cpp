@@ -137,38 +137,17 @@ template <class Cap> struct mf_graph {
 };
 
 // !!!  0-base  !!!
-const int maxn=4e5+10;
-int A[maxn];
-int L[maxn]={0};
-
 int main(){
     int n,m,S,T;
-    cin>>n>>m;
-    S=0,T=n+1;
-    mf_graph<int> plt(n+2);
-
-    for(int i=0;i<m;i++){
-        int a,b,c,d; cin>>a>>b>>c>>d;
-        L[i]=c;
-        plt.add_edge(a,b,d-c);
-        A[a]-=c,A[b]+=c;
+    cin>>n>>m>>S>>T;
+    S--,T--;
+    mf_graph<int> plt(n);
+    for(int i=1;i<=m;i++){
+        int u,v,c; cin>>u>>v>>c;
+        u--,v--;
+        plt.add_edge(u,v,c);
     }
-
-    int tot=0;
-    for(int i=1;i<=n;i++){
-        if(A[i]>0) plt.add_edge(S,i,A[i]),tot+=A[i];
-        else if(A[i]<0) plt.add_edge(i,T,-A[i]);
-    }
-    // cout<<tot<<endl;
-    if(tot!=plt.flow(S,T)) cout<<"NO"<<endl;
-    else{
-        cout<<"YES"<<endl;
-        for(int i=0;i<m;i++){
-            auto x=plt.get_edge(i);
-            cout<<x.flow+L[i]<<endl;
-        }
-    }
-
+    cout<<plt.flow(S,T)<<endl;
 
     return 0;
 }

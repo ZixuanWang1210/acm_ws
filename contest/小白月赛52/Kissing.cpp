@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+#define endl "\n"
+#define debug(x) cout << #x << ": -----> " << x << endl;
+#define inf 0x3f3f3f3f
+#define pii pair<int,int>
+#define all(x) x.begin()+1,x.end()
+#define _all(x) x.begin(),x.end()
+#define mod 998244353
+// #define ll long long
+// #define int long long
+
+using namespace std;
+
+
+
+void sol(){
+    unsigned long long n; cin>>n;
+    n%=mod;
+    unsigned long long res=n*n%mod;
+    cout<<res<<endl;    
+
+}
+
+signed main(){
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
+
+    int _=1;
+    // cin>>_;
+    while(_--){
+        sol();
+    }
+
+    return 0;
+}
