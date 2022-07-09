@@ -1,174 +1,109 @@
 #include<bits/stdc++.h>
+#include<unordered_map>
+#define mem(a,b) memset(a,b,sizeof a)
+#define cinios (ios::sync_with_stdio(false),cin.tie(0),cout.tie(0))
+#define sca scanf
+#define pri printf
+#define forr(a,b,c) for(int a=b;a<=c;a++)
+#define rfor(a,b,c) for(int a=b;a>=c;a--)
+#define endl "\n"
+//[博客地址]：https://blog.csdn.net/weixin_51797626?t=1
 using namespace std;
 
-template <class Cap> struct mf_graph {
-  public:
-    mf_graph() : _n(0) {}
-    explicit mf_graph(int n) : _n(n), g(n) {}
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<int, int> PII;
 
-    int add_edge(int from, int to, Cap cap) {
-        assert(0 <= from && from < _n);
-        assert(0 <= to && to < _n);
-        assert(0 <= cap);
-        int m = int(pos.size());
-        pos.push_back({from, int(g[from].size())});
-        int from_id = int(g[from].size());
-        int to_id = int(g[to].size());
-        if (from == to) to_id++;
-        g[from].push_back(_edge{to, to_id, cap});
-        g[to].push_back(_edge{from, from_id, 0});
-        return m;
-    }
+double DNF = 1e17;
+const int N = 210, M = 40010, MM = N;
+int INF = 0x3f3f3f3f, mod = 998244353;
+ll LNF = 0x3f3f3f3f3f3f3f3f;
+int n, m, k, T, S, D;
+int h[N], e[M], ne[M], f[M], idx;
+int dep[N], cur[N], aa[N];
+int s, t, tot;
 
-    struct edge {
-        int from, to;
-        Cap cap, flow;
-    };
+void add(int a, int b, int c, int d) {
+    e[idx] = b, f[idx] = d - c, ne[idx] = h[a], h[a] = idx++;
+    e[idx] = a, f[idx] = 0, ne[idx] = h[b], h[b] = idx++;
+}
 
-    edge get_edge(int i) {
-        int m = int(pos.size());
-        assert(0 <= i && i < m);
-        auto _e = g[pos[i].first][pos[i].second];
-        auto _re = g[_e.to][_e.rev];
-        return edge{pos[i].first, _e.to, _e.cap + _re.cap, _re.cap};
-    }
-    std::vector<edge> edges() {
-        int m = int(pos.size());
-        std::vector<edge> result;
-        for (int i = 0; i < m; i++) {
-            result.push_back(get_edge(i));
-        }
-        return result;
-    }
-    void change_edge(int i, Cap new_cap, Cap new_flow) {
-        int m = int(pos.size());
-        assert(0 <= i && i < m);
-        assert(0 <= new_flow && new_flow <= new_cap);
-        auto& _e = g[pos[i].first][pos[i].second];
-        auto& _re = g[_e.to][_e.rev];
-        _e.cap = new_cap - new_flow;
-        _re.cap = new_flow;
-    }
-
-    Cap flow(int s, int t) {
-        return flow(s, t, std::numeric_limits<Cap>::max());
-    }
-    Cap flow(int s, int t, Cap flow_limit) {
-        assert(0 <= s && s < _n);
-        assert(0 <= t && t < _n);
-        assert(s != t);
-
-        std::vector<int> level(_n), iter(_n);
-
-
-        auto bfs = [&]() {
-            std::fill(level.begin(), level.end(), -1);
-            level[s] = 0;
-            std::queue<int> que;
-            que.push(s);
-            while (!que.empty()) {
-                int v = que.front();
-                que.pop();
-                for (auto e : g[v]) {
-                    if (e.cap == 0 || level[e.to] >= 0) continue;
-                    level[e.to] = level[v] + 1;
-                    if (e.to == t) return;
-                    que.push(e.to);
-                }
-            }
-        };
-        auto dfs = [&](auto self, int v, Cap up) {
-            if (v == s) return up;
-            Cap res = 0;
-            int level_v = level[v];
-            for (int& i = iter[v]; i < int(g[v].size()); i++) {
-                _edge& e = g[v][i];
-                if (level_v <= level[e.to] || g[e.to][e.rev].cap == 0) continue;
-                Cap d =
-                    self(self, e.to, std::min(up - res, g[e.to][e.rev].cap));
-                if (d <= 0) continue;
-                g[v][i].cap += d;
-                g[e.to][e.rev].cap -= d;
-                res += d;
-                if (res == up) return res;
-            }
-            level[v] = _n;
-            return res;
-        };
-
-        Cap flow = 0;
-        while (flow < flow_limit) {
-            bfs();
-            if (level[t] == -1) break;
-            std::fill(iter.begin(), iter.end(), 0);
-            Cap f = dfs(dfs, t, flow_limit - flow);
-            if (!f) break;
-            flow += f;
-        }
-        return flow;
-    }
-
-    std::vector<bool> min_cut(int s) {
-        std::vector<bool> visited(_n);
-        std::queue<int> que;
-        que.push(s);
-        while (!que.empty()) {
-            int p = que.front();
-            que.pop();
-            visited[p] = true;
-            for (auto e : g[p]) {
-                if (e.cap && !visited[e.to]) {
-                    visited[e.to] = true;
-                    que.push(e.to);
-                }
+bool bfs() {
+    queue<int> q;
+    q.push(S);
+    mem(dep, -1);
+    dep[S] = 0, cur[S] = h[S];
+    while (q.size())
+    {
+        int t = q.front();
+        q.pop();
+        for (int i = h[t]; ~i; i = ne[i]) {
+            int j = e[i];
+            if (dep[j] == -1 && f[i]) {
+                dep[j] = dep[t] + 1;
+                cur[j] = h[j];
+                if (j == T)return true;
+                q.push(j);
             }
         }
-        return visited;
     }
+    return false;
+}
 
-  private:
-    int _n;
-    struct _edge {
-        int to, rev;
-        Cap cap;
-    };
-    std::vector<std::pair<int, int>> pos;
-    std::vector<std::vector<_edge>> g;
-};
-
-// !!!  0-base  !!!
-const int maxn=4e5+10;
-int A[maxn];
-int L[maxn]={0};
-
-int main(){
-    int n,m,S,T;
-    cin>>n>>m;
-    S=0,T=n+1;
-    mf_graph<int> plt(n+2);
-
-    for(int i=0;i<m;i++){
-        int a,b,c,d; cin>>a>>b>>c>>d;
-        L[i]=c;
-        plt.add_edge(a,b,d-c);
-        A[a]-=c,A[b]+=c;
-    }
-
-    int tot=0;
-    for(int i=1;i<=n;i++){
-        if(A[i]>0) plt.add_edge(S,i,A[i]),tot+=A[i];
-        else if(A[i]<0) plt.add_edge(i,T,-A[i]);
-    }
-    // cout<<tot<<endl;
-    if(tot!=plt.flow(S,T)) cout<<"NO"<<endl;
-    else{
-        cout<<"YES"<<endl;
-        for(int i=0;i<m;i++){
-            auto x=plt.get_edge(i);
-            cout<<x.flow+L[i]<<endl;
+int find(int u, int limit) {
+    if (u == T)return limit;
+    int flow = 0;
+    for (int i = cur[u]; ~i && flow < limit; i = ne[i]) {
+        cur[u] = i;
+        int j = e[i];
+        if (dep[j] == dep[u] + 1 && f[i]) {
+            int t = find(j, min(f[i], limit - flow));
+            if (!t)dep[j] = -1;
+            f[i] -= t, f[i ^ 1] += t, flow += t;
         }
     }
+    return flow;
+}
 
+int dinic() {
+    int r = 0, flow;
+    while (bfs())while (flow = find(S, INF))r += flow;
+    return r;
+}
+
+int main() {
+    cinios;
+
+    cin >> n >> m >> s >> t;
+    mem(h, -1);
+    S = n + 1, T = S + 1;
+
+    forr(i, 1, m) {
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
+        add(a, b, c, d);
+        aa[a] -= c, aa[b] += c;
+        //bug —— aa[a] += c, aa[b] -= c;
+        //注意这里 c 的定义是少流入和少流出
+    }
+
+    //因为有上下界所以建虚拟源点S、T补流
+    forr(i, 1, n)
+        if (aa[i] > 0)add(S, i, 0, aa[i]), tot += aa[i];
+        else if (aa[i] < 0)add(i, T, 0, -aa[i]);
+
+    add(t, s, 0, INF);//但是原图有自带的源汇点，源汇点不保证流量守恒（其他点都保证）
+    //所以需要补一条 t——s 的满容量边，让原图流量守恒
+    int tt=dinic();
+    cout<<tot<<' '<<tt<<endl;
+    if (tt < tot)cout << "No Solution";
+    else {
+        int res = f[idx - 1];
+        cout<<res<<endl;
+        S = s, T = t;
+        f[idx - 1] = f[idx - 2] = 0;
+        cout << res + dinic();
+    }
 
     return 0;
 }
