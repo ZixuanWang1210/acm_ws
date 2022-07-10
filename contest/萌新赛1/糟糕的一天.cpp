@@ -10,39 +10,28 @@
 #define int long long
 
 using namespace std;
+const int maxn=2e6+10;
+int a[maxn];
+int n,res;
 
 void sol(){
     int n; cin>>n;
-    vector<int> v(n+1);
     for(int i=1;i<=n;i++){
-        cin>>v[i];
+        cin>>a[i];
     }
-    int mn=*min_element(all(v));
-    // int res=v[1]-mn  ;
-    int res=0;
-    for(int i=1;i<=n;i++){
-        if(v[i]!=mn){
-            res=v[i]-mn;
-            break;
-        }
-    }
-    if(res==0){
-        cout<<-1<<endl;
-        return;
-    }
-    for(int i=1;i<=n;i++){
-        if(v[i]==mn) continue;
-        res=__gcd(res,v[i]-mn);
+    int mx=a[n];
+    for(int i=n-1;i>=1;i--){
+        if(a[i]<mx) res++;
+        mx=max(mx,a[i]);
     }
     cout<<res<<endl;
-
 }
 
 signed main(){
     ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
 
     int _=1;
-    cin>>_;
+    // cin>>_;
     while(_--){
         sol();
     }

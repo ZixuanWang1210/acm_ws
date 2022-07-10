@@ -7,14 +7,34 @@
 #define _all(x) x.begin(),x.end()
 #define mod 1000000007
 #define ll long long
-// #define int long long
+#define int long long
 
 using namespace std;
 
-
-
 void sol(){
-    
+    int n; cin>>n;
+    vector<int> v(n+1),s(n+1);
+    for(int i=1;i<=n;i++){
+        cin>>v[i];
+    }
+    int sum=0;
+    sort(all(v));
+    if(v[1]!=1){
+        cout<<1<<endl;
+        return;
+    }
+    for(int i=1;i<=n;i++){
+        cin>>v[i];
+        s[i]=s[i-1]+v[i];
+    }
+
+    for(int i=1;i<=n;i++){
+        if(s[i-1]+1<v[i]){
+            cout<<s[i-1]+1<<endl;
+            return;
+        }
+    }
+    cout<<s[n]+1<<endl;
 
 }
 
