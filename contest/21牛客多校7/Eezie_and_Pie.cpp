@@ -8,12 +8,17 @@ void add(int a,int b){
 	e[idx]=b,ne[idx]=h[a],h[a]=idx++;
 }
 
-int n,k;
+int n;
+int ord[maxn]; 
 int res[maxn];
+int dis[maxn];
+int st[maxn][31];
+
+
 
 struct LCA {
     /*
-    $st[cnt][0]$：树的$dfs$序，第$cnt$个遍历的点是$st[cnt][0]$
+    $st[cnt][0]$：树的 $dfs$序，第 $cnt$个遍历的点是 $st[cnt][0]$
     $dfn[x]$：节点编号为x的节点，第一次出现在dfs序中的位置
     $dep[x]$：节点x在树中的深度
     */
@@ -55,7 +60,14 @@ void dfs(int u,int fa){
 		dfs(j,u);
 		res[u]+=res[j];
 	}
-	ans=max(ans,res[u]);
+}
+int tt[maxn];
+void get(int a,int b){
+	res[a]++,res[b]++;
+	int lca=plt.get(a,b);
+	res[lca]--,res[plt.fath[lca]]--;
+	tt[b]--;
+//	cout<<tt[b]<<' ' ;
 }
 
 
@@ -63,7 +75,25 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-	cin>>n>>k;
+
+    cin>>n;
+    for(int i=1;i<n;i++){
+        int u,v; cin>>u>>v;
+        add(u,v),add(v,u);
+    }
+
+    for(int i=1;i<=n;i++){
+        cin>>dis[i];
+    }
+
+    for(int i=1;i<=n;i++){
+        
+    }
+    
+
+	cin>>n;
+	for(int i=1;i<=n;i++) cin>>ord[i];
+	
 	memset(h,-1,sizeof h);
 	for(int i=1;i<=n-1;i++){
 		int a,b; cin>>a>>b;
@@ -73,14 +103,17 @@ int main(){
 	plt.dfs(1,-1);
 	plt.RMQ();
 	
-	while(k--){
-		int a,b; cin>>a>>b;
-		int lca=plt.get(a,b);
-		res[a]++,res[b]++,res[lca]--,res[plt.fath[lca]]--;
+	for(int i=2;i<=n;i++){
+		get(ord[i-1],ord[i]);
 	}
-	
+//	int ed=ord[n];
 	dfs(1,-1);
-	cout<<ans<<endl;
+	
+	for(int i=1;i<=n;i++){
+//		if(i!=ed) cout<<res[i]<<endl;
+//		else cout<<max(res[i]-1,0)<<endl;
+		cout<<max(res[i]+tt[i],0)<<endl;
+	}
 	
 	
 	
