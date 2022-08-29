@@ -4,6 +4,10 @@
 #include <bits/stdc++.h>
 typedef long long ll;
 typedef unsigned long long ull;
+#define inf 0x3f3f3f3f
+#define all(x) x.begin()+1,x.end()
+#define _all(x) x.begin(),x.end()
+#define mod 1000000007
 #define pii pair<int,int>
 #define int long long
 #define debug_(ch, i) printf(#ch"[%d]: %d\n", i, ch[i])
@@ -20,7 +24,7 @@ int qPow(int a, int b){
 }
 
 signed main(){
-    ios::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+    ios::sync_with_stdio(false); cin.tie(nullptr); cout.tie(nullptr);
     #ifdef LOCAL
     freopen("in.txt","r",stdin);
     freopen("out.txt","w",stdout);
