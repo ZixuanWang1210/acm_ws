@@ -21,6 +21,7 @@ int dfn[maxn],low[maxn],timestamp;
 int root,ans;
 int n,m;
 
+// 最大dcc数量
 void tarjan(int u){
     dfn[u]=low[u]=++timestamp;
     int cnt=0;
@@ -37,7 +38,24 @@ void tarjan(int u){
     ans=max(ans,cnt);
 }
 
-// 缩点
+// 判断割点
+void tarjan(int u){
+    dfn[u]=low[u]=++timestamp;
+    stk[++top]=u;
+
+    int cnt=0;
+    for(int i=h[u];~i;i=ne[i]){
+        int j=e[i];
+        if(!dfn[j]){
+            tarjan(j);
+            low[u]=min(low[u],low[j]);
+            if(low[j]>=dfn[u]&&u!=a&&dfn[b]>=dfn[j]) cut[u]=true;
+        }
+        else low[u]=min(low[u],dfn[j]);
+    }
+}
+
+// 缩点建图
 int dfn[M],low[M],timestamp=0;
 int stk[N],top=0;
 vector<int> dcc[M]; //记录每个连通块内的点

@@ -31,6 +31,14 @@ void sol(){
     for(int i=1;i<=n;i++){
         if(!dfn[i]) tarjan(i);
     }
+    // 遍历连通域
+    for(int i=1;i<=n;i++){
+        for(int j=h[i];~j;j=ne[j]){
+            int k=e[j];
+            int xx=id[i],yy=id[k];
+            if(xx!=yy) dout[xx]++,din[yy]++;
+        }
+    }
     // 建新图
     unordered_set<ll> s;
     for(int i=1;i<=n;i++){
