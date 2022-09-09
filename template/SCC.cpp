@@ -56,5 +56,4 @@ void sol(){
     for(int i=scc_cnt;i>0;i--){
 
     }
-
 }
