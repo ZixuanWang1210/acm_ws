@@ -1,193 +1,192 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-void out(string s) {
-    cout << s << endl;
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include<conio.h>
+#include<time.h>
+char x[10][20];
+int H[20];
+int Z[20];
+int h, v;//闁跨喕顢滈幉瀣闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閿燂拷
+char ch = 'd';
+int len = 3;
+char f;
+void getFood()//妞嬬喖鏁撻弬銈嗗
+{
+	h = rand() % 10;
+	v = rand() % 20;
+	if (x[h][v] == 1)
+	{
+		getFood();
+	}
+	else
+		x[h][v] = 3;//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚笰SCII闁跨喐鏋婚幏铚傝礋3
 }
-
-void add() {
-    int a, b;
-    out("请输出两个整数a和b");
-    cin >> a >> b;
-
-    out("结果的十进制形式是：");
-    cout << dec << a + b << endl;
-    out("结果的八进制形式是：");
-    cout << oct << a + b << endl;
-    out("结果的十六进制形式是：");
-    cout << hex << a + b << endl;
-
-    return;
+void print()
+{
+	for (int i = 0; i <len; i++)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻崣顐ゃ€嬮幏宄扮秿闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏宄板弿闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔诲▏椤庮垽璁ｉ幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撶槐绐糃II闁跨喐鏋婚幏铚傝礋1闁跨喐鏋婚幏锟�
+	{
+		x[H[i]][Z[i]] = 1;
+	}
+	for (int i = 0; i < 10; i++)//闁跨喓鐓幉瀣闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲绱￠柨鐔告灮閹风兘鏁撻弬銈嗗
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			printf("%c", x[i][j]);
+		}
+		printf("\n");
+	}
+	Sleep(500);//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚�0.5闁跨喐鏋婚幏锟� 闁跨喐纾ヨぐ鎾绘晸閺傘倖瀚归柨鐔告灮閹凤拷0.5闁跨喕顕犻崝銊ょ闁跨喐鏋婚幏锟�
+	system("cls");//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔烘畷娓氬灝鐨㈤柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸闁鹃绱幏鐑芥晸閺傘倖瀚�
 }
-
-void sub() {
-    int a, b;
-    out("请输出两个整数a和b");
-    cin >> a >> b;
-
-    out("结果的十进制形式是：");
-    cout << dec << a - b << endl;
-    out("结果的八进制形式是：");
-    cout << oct << a - b << endl;
-    out("结果的十六进制形式是：");
-    cout << hex << a - b << endl;
-    return;
+void getkey()//闁跨喎褰ㄧ拋瑙勫闁跨喕顫楅崙銈嗗闁跨喖鎽涵閿嬪闁跨喐鏋婚幏锟�
+{
+	if (_kbhit())//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲缍嶉柨鐔告灮閹风柉绠ｉ柨鐔告灮閹烽鐛婇柨鐔活敎鏉堢偓瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚�
+	{
+		ch = _getch();//闁跨喐鏋婚幏宄板絿闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归崐锟�
+		if (ch == f)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔诲▏鐢喗瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔侯仾閻ㄥ嫬鍤栭幏鐑芥晸閺傘倖瀚规稉鈧柨鐔告灮閹风兘鏁撻弬銈嗗娑撴椽鏁撻弬銈嗗閺佸牓鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归崣鏍晸閺傘倖瀚归柨鐔兼應閻ㄥ嫮銆嬮幏鐑芥晸閺傘倖瀚归崐锟�
+		{
+			getkey();
+		}
+		else if ((ch == 100 && f != 97) || ch == 119 && f != 115 || ch == 97 && f != 100 || ch == 115 && f != 119) //闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔峰建鐠佽瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏閿嬫櫏闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹烽攱妞傞柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閹存帗婀為柨鐔告灮閹风兘鏁撶粩顓犵搼缁涘缍囬幏锟�
+			f = ch;//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹烽攱鏅ラ弮鍫曟晸閺傘倖瀚筩h闁跨喐鏋婚幏宄扳偓闂磋礋f
+		else
+			getkey();//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹烽攱鏅ラ弮鍫曟晸閺傘倖瀚归柨鐔兼應鐠囇勫闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐕傛嫹
+	}
 }
-
-void mul() {
-    double a, b;
-    out("请输出两个浮点数a和b");
-    cin >> a >> b;
-    out("a*b的值为");
-    cout << a * b << endl;
-    out("乘法结果的指数形式是：");
-    printf("%E\n", a * b);
-    return;
+void left()
+{
+	x[H[0]][Z[0]] = '-';
+	for (int i = 0; i <len - 1; i++)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归崗銊╂晸閺傘倖瀚归崜宥夋晸閺傘倖瀚规稉鈧柨鐔告灮閹凤拷
+	{
+		Z[i] = Z[i + 1];
+		H[i] = H[i + 1];
+	}
+	Z[len-1]--;
 }
-
-void div() {
-    int a, b;
-    out("请输出两个整数a和b");
-    cin >> a >> b;
-    if (b == 0) {
-        out("注意！b不能为0.请重新输入");
-        div();
-        return;
-    }
-    out("a/b的值为");
-    cout << (double)a / b << endl;
-    out("乘法结果的指数形式是：");
-    printf("%E\n", a / b);
-    return;
+void right()
+{
+	x[H[0]][Z[0]] = '-';
+	for (int i = 0; i <len - 1; i++)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归崗銊╂晸閺傘倖瀚归崜宥夋晸閺傘倖瀚规稉鈧柨鐔告灮閹凤拷
+	{
+		Z[i] = Z[i + 1];
+		H[i] = H[i + 1];
+	}
+	Z[len-1]++;
 }
-
-void mod() {
-    int a, b;
-    out("请输出两个整数a和b");
-    cin >> a >> b;
-    if (b == 0) {
-        out("注意！b不能为0.请重新输入");
-        mod();
-        return;
-    }
-    out("a%b的值为");
-    cout << a % b << endl;
-    return;
+void up()
+{
+	x[H[0]][Z[0]] = '-';
+	for (int i = 0; i <len-1; i++)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归崗銊╂晸閺傘倖瀚归崜宥夋晸閺傘倖瀚规稉鈧柨鐔告灮閹凤拷
+	{
+		Z[i] = Z[i + 1];
+		H[i] = H[i + 1];
+	}
+	H[len-1]--;
 }
-
-void get_area() {
-    int r;
-    out("请输圆的半径r");
-    cin >> r;
-    const double PI = 3.1415926;
-    out("圆的面积为：");
-    cout << (double)r * PI << endl;
-    out("保留两位小数的结果是：");
-    cout << fixed << setprecision(2) << (double)r * PI << endl;
-    return;
+void down()
+{
+	x[H[0]][Z[0]] = '-';
+	for (int i = 0; i <len - 1; i++)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归崗銊╂晸閺傘倖瀚归崜宥夋晸閺傘倖瀚规稉鈧柨鐔告灮閹凤拷
+	{
+		Z[i] = Z[i + 1];
+		H[i] = H[i + 1];
+	}
+	H[len-1]++;
 }
-
-void split() {
-    int x;
-    out("请输入需要进行拆分的正整数");
-    cin >> x;
-    if (x < 0 || x > 999) {
-        out("输入不合法，请重新输入三位以内的正整数");
-        split();
-        return;
-    }
-    string s[3] = {"该整数的个位为：", "该整数的十位为：", "该整数的百位为："};
-    int idx = 0;
-    while (x) {
-        int t = x % 10;
-        cout << s[idx] << t << endl;
-        idx++;
-        x /= 10;
-    }
-    return;
+int main()
+{
+	f = ch;//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚规慨瀣晸閺傘倖瀚归柨鐔哄珱鐠佽瀚归柨鐔告灮閹风兘鏁撻弬銈嗗閸婂ジ鏁撻弬銈嗗f
+	for (int i = 0; i < 10; i++) //闁跨喐鏋婚幏鐑芥晸鐞涙鍤栭幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲鍙忛柨鐔告灮閹风兘鏁撻弬銈嗗'-'闁跨喐鏋婚幏閿嬬３椤掑﹥瀚归柨鐔告灮閹风柉鐨柨鐔虹哺绾攱瀚归柨鐕傛嫹
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			x[i][j] = '-';
+		}
+	}
+	for (int i = 0; i <10; i++)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撴渚亾閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏鐑芥晸閿燂拷
+	{
+		Z[i] = 0;
+		H[i] = 0;
+	}
+	for (int i = 0; i <len; i++)//闁跨喐鏋婚幏宄扮秿閸擄拷3闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹风兘鏁撻弬銈嗗闁跨喐鏋婚幏锟�
+		Z[i] = i;
+	getFood();
+	while (len<=19)//闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔侯仾绾板瀚归柨鐔告灮閹风柉鐓妵鏍晸閺傘倖瀚归柨鐔稿复椤曞棙瀚归柨鐔告灮閹风兘鏁撴潏鍐挎嫹
+	{
+		getkey();
+		if (x[h][v]!=3)//妞嬬喖鏁撻弬銈嗗濞岋繝鏁撻弬銈嗗闁跨喎澹欓幍宥勭串閹峰嘲褰囨鐔兼晸閺傘倖瀚�
+		{
+          getFood();
+		}
+		switch (f)
+		{
+		case 'w':
+			  if(H[len-1]-1<0)
+			 {
+			  printf("闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲顣鹃柨鐔告灮閹风﹥n");
+		      return 0;
+             }
+			else if (H[len-1]-1==h&&Z[len-1]==v)//闁跨喎褰ㄧ拋瑙勫闁跨喐鏋婚幏鐤洣闁跨喓顏喊澶嬪闁跨喖鎽棃鈺傚闁跨喐鏋婚幏鐑芥晸鐟欐帒鍤栭幏鐑芥晸閺傘倖瀚规鐔兼晸閺傘倖瀚归悧锟犳晸閿燂拷
+			 {
+				 H[len]=h;
+				 Z[len]=v;
+				 len++;
+				 break;
+			 }
+			up();
+			break;
+		case 'a':
+			if(Z[len-1]-1<0)
+			{
+			printf("闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲顣鹃柨鐔告灮閹风﹥n");
+		    return 0;
+			}
+            else if (H[len-1]==h&&Z[len-1]-1==v)
+			 {
+				 H[len]=h;
+				 Z[len]=v;
+				 len++;
+				 break;
+			 }
+			left();
+			break;
+		case 's':
+			if(H[len-1]+1>=10)
+			{
+			printf("闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲顣鹃柨鐔告灮閹风﹥n");
+		    return 0;
+			}
+			if (H[len-1]+1==h&&Z[len-1]==v)
+			 {
+				 H[len]=h;
+				 Z[len]=v;
+				 len++;
+				 break;
+			 }
+			down();
+			break;
+		case 'd':
+			if(Z[len-1]+1>=20)
+			{
+			printf("闁跨喐鏋婚幏鐑芥晸閺傘倖瀚归柨鐔告灮閹峰嘲顣鹃柨鐔告灮閹风﹥n");
+		    return 0;
+			}
+			if (H[len-1]==h&&Z[len-1]+1==v)
+			 {
+				 H[len]=h;
+				 Z[len]=v;
+				 len++;
+				 break;
+			 }
+			right();
+			break;
+		}
+		print();
+	}
+    printf("You win!\n");
+	system("pause");
+	return 0;
 }
-
-void grade() {
-    int x;
-    out("请输入学生的成绩");
-    cin >> x;
-    cout << "学生的成绩等级为";
-    if (x < 0 || x > 100) {
-        out("输入数据不合法，请重新输入");
-        grade();
-        return;
-    }
-    if (x == 100) {
-        cout << "A";
-    } else {
-        x /= 10;
-        switch (x) {
-            case 9:
-                cout << "A";
-                break;
-            case 8:
-                cout << "B";
-                break;
-            case 7:
-                cout << "C";
-                break;
-            case 6:
-                cout << "D";
-                break;
-            default:
-                cout << "E";
-                break;
-        }
-    }
-    return;
-}
-
-void judge_leap() {
-    out("请输入所需计算的年份");
-    int year;
-    cin >> year;
-    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-        cout << year << " is 闰年" << endl;
-    } else
-        cout << year << " is 平年" << endl;
-    return;
-}
-
-void get_sum1() {
-    out("请输入计算范围 n");
-    int n;
-    cin >> n;
-    int sum = 0;
-    for (int i = 1; i <= n; i++) {
-        if (i & 1) sum += i;
-    }
-    cout << "1到输入数之间的奇数和：" << sum << endl;
-    return;
-}
-
-void get_sum2() {
-    out("请输入计算范围 n");
-    int n;
-    cin >> n;
-    int sum = 0;
-    n++;
-    while (n--) {
-        if (!(n & 1)) sum += n;
-    }
-    cout << "1到输入数之间的奇数和：" << sum << endl;
-    return;
-}
-
-void get_sum3() {
-    out("请输入计算范围 n");
-    int n;
-    cin >> n;
-    int sum = 0;
-    do {
-        if (!(n & 3)) sum += n;
-    } while (n--);
-    cout << "1到输入数之间的3的倍数的和：" << sum << endl;
-    return;
 }
 
 void get_from_to() {
