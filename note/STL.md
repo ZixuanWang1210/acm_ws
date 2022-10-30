@@ -248,11 +248,11 @@ int main()
 	map<string,int>data;
 	data["星期天"] = 7;
 	data["星期六"] = 6;
-	data.insert(pair<string,int>("星期五",5));
+	// data.insert(pair<string,int>("星期五",5));
 	
-	for(map<string,int>::iterator it = data.begin();it!=data.end();it++){
-		cout<< it->first <<" "<< it->second <<endl;
-	} 
+	//for(map<string,int>::iterator it = data.begin();it!=data.end();it++){
+	//	cout<< it->first <<" "<< it->second <<endl;
+	//} 
     
     for(auto i:mp)
     cout<<i.first<<' '<<i.second<<endl;

@@ -1,18 +1,22 @@
 #include <bits/stdc++.h>
 #define endl "\n"
 #define debug(x) cout << #x << ": -----> " << x << endl;
-// typedef long long ll;
-// typedef unsigned long long ull;
+#define inf 0x3f3f3f3f
+#define pii pair<int, int>
+#define all(x) x.begin() + 1, x.end()
+#define _all(x) x.begin(), x.end()
+#define mod 1000000007
+#define ll long long
+// #define int long long
 
 using namespace std;
 
-const int maxn = 5e6 + 10;
+const int maxn = 1e6 + 10;
 int h[maxn], ne[maxn], e[maxn], idx;
-int n, m, s;
-
 void add(int a, int b) {
     e[idx] = b, ne[idx] = h[a], h[a] = idx++;
 }
+int n, q;
 
 struct LCA {
     /*
@@ -21,7 +25,6 @@ struct LCA {
     $dep[x]$：节点x在树中的深度
     */
 
-   // 注意修改 st 的大小
     int dfn[maxn], dep[maxn], st[maxn][30], cnt;
     void dfs(int x, int fa) {
         dfn[x] = ++cnt, dep[x] = dep[fa] + 1, st[cnt][0] = x;
@@ -49,32 +52,60 @@ struct LCA {
         int res = dep[st[l][k]] < dep[st[r - (1 << k) + 1][k]] ? st[l][k] : st[r - (1 << k) + 1][k];
         return res;
     }
-    
+
     void init(int root) {
         dfs(root, 0);
         RMQ();
     }
 } plt;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    cin >> n >> m >> s;
+void sol() {
+    cin >> n >> q;
     memset(h, -1, sizeof h);
     for (int i = 1; i <= n - 1; i++) {
         int u, v;
         cin >> u >> v;
         add(u, v), add(v, u);
     }
+    plt.init(1);
 
-    plt.dfs(s, -1);
-    plt.RMQ();
+    for (int i = 1; i <= q; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        int lbc = plt.get(b, c);
+        int step = plt.dep[b] + plt.dep[c] - 2 * plt.dep[lbc];
+        if (plt.dep[a] < plt.dep[c] + step) {
+            cout << "YES" << endl;
+            continue;
+            ;
+        } else if (plt.dep[a] > plt.dep[c] + step) {
+            cout << "NO" << endl;
+            continue;
+            ;
+        }
 
-    while (m--) {
-        int a, b;
-        cin >> a >> b;
-        cout << plt.get(a, b) << endl;
+        int lac = plt.get(a, c);
+        if (lac != 1) {
+            cout << "YES" << endl;
+            continue;
+            ;
+        } else {
+            cout << "NO" << endl;
+            continue;
+            ;
+        }
+    }
+}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+    int _ = 1;
+    cin >> _;
+    while (_--) {
+        sol();
     }
 
     return 0;
