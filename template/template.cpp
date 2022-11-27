@@ -5,6 +5,7 @@
 typedef long long ll;
 typedef unsigned long long ull;
 #define inf 0x3f3f3f3f
+#define INF 0x3f3f3f3f3f3f3f3fLL
 #define all(x) x.begin()+1,x.end()
 #define _all(x) x.begin(),x.end()
 #define mod 1000000007
